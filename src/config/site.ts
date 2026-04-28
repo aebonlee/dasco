@@ -70,7 +70,7 @@ const site: SiteConfig = {
       ]
     },
     {
-      labelKey: 'site.nav.lecture',
+      labelKey: 'site.nav.learning',
       path: '/lecture',
       activePath: '/lecture',
       dropdown: [
@@ -78,12 +78,14 @@ const site: SiteConfig = {
         { path: '/lecture/intermediate', labelKey: 'site.nav.lectureIntermediate' }
       ]
     },
+    { path: '/prompt-learning', labelKey: 'site.nav.promptLearning', activePath: '/prompt-learning' },
     { path: '/practice', labelKey: 'site.nav.practice', activePath: '/practice' },
   ],
 
   footerLinks: [
     { path: '/', labelKey: 'nav.home' },
     { path: '/curriculum', labelKey: 'site.nav.curriculum' },
+    { path: '/prompt-learning', labelKey: 'site.nav.promptLearning' },
     { path: '/practice', labelKey: 'site.nav.practice' }
   ],
 

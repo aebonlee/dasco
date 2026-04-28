@@ -28,6 +28,7 @@ const CurriculumIntermediate = lazy(() => import('../pages/CurriculumIntermediat
 const Lecture = lazy(() => import('../pages/Lecture'));
 const LectureBasic = lazy(() => import('../pages/LectureBasic'));
 const LectureIntermediate = lazy(() => import('../pages/LectureIntermediate'));
+const PromptLearning = lazy(() => import('../pages/PromptLearning'));
 const Practice = lazy(() => import('../pages/Practice'));
 
 const Loading = (): ReactElement => (
@@ -76,7 +77,10 @@ const PublicLayout = (): ReactElement => {
             <Route path="/lecture/basic" element={<LectureBasic />} />
             <Route path="/lecture/intermediate" element={<LectureIntermediate />} />
 
-            {/* 프롬프트 실습 */}
+            {/* 프롬프트 학습 */}
+            <Route path="/prompt-learning" element={<PromptLearning />} />
+
+            {/* AI 실습 */}
             <Route path="/practice" element={<Practice />} />
 
             {/* 404 */}

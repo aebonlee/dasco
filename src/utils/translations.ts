@@ -172,13 +172,15 @@ export const translations: Record<string, Record<string, unknown>> = {
     // ─── 다스코 전용 키 ───
     site: {
       nav: {
-        curriculum: '커리큘럼',
+        curriculum: '교육과정',
         basic: '기초과정 (4시간)',
         intermediate: '중급과정 (4시간)',
+        learning: '학습하기',
         lecture: '강의안',
-        lectureBasic: '기초과정 강의안',
-        lectureIntermediate: '중급과정 강의안',
-        practice: '프롬프트 실습'
+        lectureBasic: '기초과정 학습',
+        lectureIntermediate: '중급과정 학습',
+        promptLearning: '프롬프트 학습',
+        practice: 'AI 실습'
       },
       home: {
         title: 'DASCO AI Academy',
@@ -361,13 +363,15 @@ export const translations: Record<string, Record<string, unknown>> = {
 
     site: {
       nav: {
-        curriculum: 'Curriculum',
+        curriculum: 'Courses',
         basic: 'Basic Course (4hrs)',
         intermediate: 'Intermediate (4hrs)',
+        learning: 'Learning',
         lecture: 'Lectures',
-        lectureBasic: 'Basic Lecture Notes',
-        lectureIntermediate: 'Intermediate Lecture Notes',
-        practice: 'Prompt Practice'
+        lectureBasic: 'Basic Learning',
+        lectureIntermediate: 'Intermediate Learning',
+        promptLearning: 'Prompt Learning',
+        practice: 'AI Practice'
       },
       home: {
         title: 'DASCO AI Academy',

@@ -115,34 +115,42 @@ const Practice = (): ReactElement => {
 
   return (
     <>
-      <SEOHead title="프롬프트 실습" description="ChatGPT API를 활용한 프롬프트 실습" />
+      <SEOHead title="AI 실습" description="OpenAI API Key를 사용하여 ChatGPT와 직접 대화하며 프롬프트를 실습합니다" />
 
       <section className="page-header">
         <div className="container">
-          <h2>프롬프트 실습</h2>
-          <p>OpenAI API를 활용하여 직접 ChatGPT와 대화하며 실습합니다</p>
+          <h2>AI 실습</h2>
+          <p>OpenAI API Key를 사용하여 직접 ChatGPT와 대화하며 프롬프트를 실습합니다</p>
         </div>
       </section>
 
       <section className="section">
         <div className="practice-page">
 
-          {/* API Key */}
+          {/* API Key 안내 */}
           <div className="api-key-section">
-            <label htmlFor="api-key">OpenAI API Key</label>
+            <h4 style={{ marginBottom: '0.8rem', color: 'var(--text-primary)' }}>OpenAI API Key 입력</h4>
+            <p style={{ marginBottom: '1rem', fontSize: '0.9rem', lineHeight: '1.7', color: 'var(--text-secondary)' }}>
+              이 실습 페이지는 <strong>OpenAI API Key</strong>를 사용하여 ChatGPT(GPT-4o mini)와 직접 대화합니다.
+              API Key가 없으면 아래에서 발급받으세요.
+            </p>
+            <label htmlFor="api-key" style={{ fontWeight: 600, marginBottom: '0.4rem', display: 'block' }}>API Key</label>
             <input
               id="api-key"
               type="password"
               value={apiKey}
               onChange={(e) => handleApiKeyChange(e.target.value)}
-              placeholder="sk-..."
+              placeholder="sk-proj-..."
               autoComplete="off"
             />
-            <p className="hint">
-              API Key는 브라우저 세션에만 저장되며, 탭을 닫으면 자동 삭제됩니다.
-              Key 발급: <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary-color)' }}>platform.openai.com/api-keys</a>
-              &nbsp;(유료 — 사용한 만큼 과금)
-            </p>
+            <div style={{ marginTop: '0.8rem', padding: '1rem', background: 'var(--bg-primary)', border: '1px solid var(--border-color)', borderRadius: '8px', fontSize: '0.85rem', lineHeight: '1.7', color: 'var(--text-secondary)' }}>
+              <strong>API Key 발급 방법:</strong><br />
+              1. <a href="https://platform.openai.com/signup" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary-blue)' }}>platform.openai.com</a>에서 계정 생성 (Google 로그인 가능)<br />
+              2. <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary-blue)' }}>API Keys</a> 페이지에서 &quot;Create new secret key&quot; 클릭<br />
+              3. 생성된 키(sk-proj-...)를 위 입력란에 붙여넣기<br /><br />
+              <strong>비용:</strong> GPT-4o mini 기준 약 1,000단어당 ₩1~₩3 수준 (매우 저렴)<br />
+              <strong>보안:</strong> API Key는 브라우저 세션에만 저장되며, 탭을 닫으면 자동 삭제됩니다.
+            </div>
           </div>
 
           {/* Preset Prompts */}
