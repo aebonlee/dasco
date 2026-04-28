@@ -88,12 +88,12 @@ const Home = (): ReactElement => {
       </section>
 
       {/* CTA */}
-      <section className="section" style={{ textAlign: 'center', paddingTop: 0 }}>
-        <div className="container" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Link to="/prompt-learning" className="btn-course" style={{ fontSize: '1rem', padding: '14px 32px' }}>
+      <section className="section cta-section">
+        <div className="container cta-buttons">
+          <Link to="/prompt-learning" className="btn-course btn-outline btn-lg">
             프롬프트 학습
           </Link>
-          <Link to="/practice" className="btn-course" style={{ fontSize: '1rem', padding: '14px 32px', background: '#4CAF50' }}>
+          <Link to="/practice" className="btn-course btn-lg">
             AI 실습 시작하기
           </Link>
         </div>

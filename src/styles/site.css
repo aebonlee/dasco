@@ -66,12 +66,13 @@
   border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .course-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
 }
 
 .course-card .course-badge {
@@ -130,9 +131,8 @@
   gap: 4px;
 }
 
-.course-card .btn-course {
+.btn-course {
   display: inline-block;
-  margin-top: 1.2rem;
   padding: 10px 24px;
   background: var(--primary-blue);
   color: #fff;
@@ -140,11 +140,46 @@
   text-decoration: none;
   font-weight: 600;
   font-size: 0.9rem;
-  transition: opacity 0.2s;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
-.course-card .btn-course:hover {
-  opacity: 0.85;
+.btn-course:hover {
+  background: var(--primary-blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 70, 200, 0.25);
+}
+
+.btn-course.btn-outline {
+  background: transparent;
+  color: var(--primary-blue);
+  border: 2px solid var(--primary-blue);
+}
+
+.btn-course.btn-outline:hover {
+  background: var(--primary-blue);
+  color: #fff;
+}
+
+.course-card .btn-course {
+  margin-top: 1.2rem;
+}
+
+/* ── CTA Section ── */
+.cta-section {
+  text-align: center;
+  padding-top: 0;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-course.btn-lg {
+  padding: 14px 36px;
+  font-size: 1rem;
 }
 
 /* ── Curriculum Page ── */
@@ -549,6 +584,7 @@
   background: var(--bg-primary);
   border: 1px solid var(--border-color);
   border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 .stat-number {
