@@ -28,7 +28,9 @@ const CurriculumIntermediate = lazy(() => import('../pages/CurriculumIntermediat
 const Lecture = lazy(() => import('../pages/Lecture'));
 const LectureBasic = lazy(() => import('../pages/LectureBasic'));
 const LectureIntermediate = lazy(() => import('../pages/LectureIntermediate'));
-const PromptLearning = lazy(() => import('../pages/PromptLearning'));
+const PromptEvalHub = lazy(() => import('../pages/prompt-eval/PromptEvalHub'));
+const PromptWorkshop = lazy(() => import('../pages/prompt-eval/PromptWorkshop'));
+const PromptPractice = lazy(() => import('../pages/prompt-eval/PromptPractice'));
 const Practice = lazy(() => import('../pages/Practice'));
 
 const Loading = (): ReactElement => (
@@ -77,10 +79,12 @@ const PublicLayout = (): ReactElement => {
             <Route path="/lecture/basic" element={<LectureBasic />} />
             <Route path="/lecture/intermediate" element={<LectureIntermediate />} />
 
-            {/* 프롬프트 학습 */}
-            <Route path="/prompt-learning" element={<PromptLearning />} />
+            {/* 프롬프트 실습 (university 포팅) */}
+            <Route path="/prompt-eval" element={<PromptEvalHub />} />
+            <Route path="/prompt-eval/workshop" element={<PromptWorkshop />} />
+            <Route path="/prompt-eval/practice" element={<PromptPractice />} />
 
-            {/* AI 실습 */}
+            {/* AI 실습 (ChatGPT) */}
             <Route path="/practice" element={<Practice />} />
 
             {/* 404 */}

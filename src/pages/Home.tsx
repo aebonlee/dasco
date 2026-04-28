@@ -90,7 +90,7 @@ const Home = (): ReactElement => {
       {/* CTA */}
       <section className="section cta-section">
         <div className="container cta-buttons">
-          <Link to="/prompt-learning" className="btn-course btn-outline btn-lg">
+          <Link to="/prompt-eval" className="btn-course btn-outline btn-lg">
             프롬프트 학습
           </Link>
           <Link to="/practice" className="btn-course btn-lg">

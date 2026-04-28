@@ -78,14 +78,23 @@ const site: SiteConfig = {
         { path: '/lecture/intermediate', labelKey: 'site.nav.lectureIntermediate' }
       ]
     },
-    { path: '/prompt-learning', labelKey: 'site.nav.promptLearning', activePath: '/prompt-learning' },
+    {
+      labelKey: 'site.nav.promptLearning',
+      path: '/prompt-eval',
+      activePath: '/prompt-eval',
+      dropdown: [
+        { path: '/prompt-eval', labelKey: 'site.nav.promptHub' },
+        { path: '/prompt-eval/workshop', labelKey: 'site.nav.promptWorkshop' },
+        { path: '/prompt-eval/practice', labelKey: 'site.nav.promptTest' }
+      ]
+    },
     { path: '/practice', labelKey: 'site.nav.practice', activePath: '/practice' },
   ],
 
   footerLinks: [
     { path: '/', labelKey: 'nav.home' },
     { path: '/curriculum', labelKey: 'site.nav.curriculum' },
-    { path: '/prompt-learning', labelKey: 'site.nav.promptLearning' },
+    { path: '/prompt-eval', labelKey: 'site.nav.promptLearning' },
     { path: '/practice', labelKey: 'site.nav.practice' }
   ],
 

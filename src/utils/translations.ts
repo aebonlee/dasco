@@ -180,6 +180,9 @@ export const translations: Record<string, Record<string, unknown>> = {
         lectureBasic: '기초과정 학습',
         lectureIntermediate: '중급과정 학습',
         promptLearning: '프롬프트 학습',
+        promptHub: '학습 자료',
+        promptWorkshop: '작성 평가',
+        promptTest: '종합 테스트',
         practice: 'AI 실습'
       },
       home: {
@@ -371,6 +374,9 @@ export const translations: Record<string, Record<string, unknown>> = {
         lectureBasic: 'Basic Learning',
         lectureIntermediate: 'Intermediate Learning',
         promptLearning: 'Prompt Learning',
+        promptHub: 'Study Materials',
+        promptWorkshop: 'Writing Eval',
+        promptTest: 'Practice Test',
         practice: 'AI Practice'
       },
       home: {
