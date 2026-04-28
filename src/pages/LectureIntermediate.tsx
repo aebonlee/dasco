@@ -6,8 +6,9 @@ const LectureIntermediate = (): ReactElement => {
     <>
       <SEOHead title="중급과정 강의안" description="생성형AI 중급과정 강의 자료" />
 
-      <section className="page-header">
+      <section className="page-header-ed">
         <div className="container">
+          <div className="eyebrow">Intermediate Lecture</div>
           <h2>중급과정 강의안</h2>
           <p>생성형 인공지능 업무 활용 심화 강의 자료</p>
         </div>

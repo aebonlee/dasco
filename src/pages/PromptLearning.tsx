@@ -7,8 +7,9 @@ const PromptLearning = (): ReactElement => {
     <>
       <SEOHead title="프롬프트 학습" description="생성형AI 프롬프트 작성법과 핵심 기법을 학습합니다" />
 
-      <section className="page-header">
+      <section className="page-header-ed">
         <div className="container">
+          <div className="eyebrow">Prompt Engineering</div>
           <h2>프롬프트 학습</h2>
           <p>ChatGPT 등 생성형AI를 효과적으로 활용하기 위한 프롬프트 작성 기법</p>
         </div>
@@ -170,21 +171,26 @@ Step 4: 실행 계획 수립"`}</div>
           </div>
 
           {/* CTA - 실습으로 이동 */}
-          <div style={{ textAlign: 'center', marginTop: '3rem', padding: '2rem', background: 'var(--bg-secondary, #f8f9fa)', borderRadius: '12px' }}>
-            <h3 style={{ marginBottom: '1rem', color: 'var(--text-primary)' }}>
-              프롬프트 기법을 직접 실습해보세요!
-            </h3>
-            <p style={{ marginBottom: '1.5rem', color: 'var(--text-secondary)' }}>
-              OpenAI API Key를 사용하여 ChatGPT와 직접 대화하며 위에서 배운 기법을 연습합니다.
-            </p>
-            <Link
-              to="/practice"
-              className="btn-course"
-              style={{ fontSize: '1rem', padding: '14px 32px' }}
-            >
-              AI 실습 시작하기 →
-            </Link>
-          </div>
+          <section className="cta-ed" style={{ borderRadius: 'var(--radius)', marginTop: '3rem' }}>
+            <div className="cta-inner" style={{ padding: '0' }}>
+              <div>
+                <div className="cta-eyebrow">&mdash; 실습 안내</div>
+                <h2 className="cta-title-ed" style={{ fontSize: 'clamp(24px, 3vw, 36px)' }}>
+                  프롬프트 기법을<br />
+                  <span className="accent">직접 실습</span>해보세요
+                </h2>
+              </div>
+              <div className="cta-side">
+                <p>OpenAI API Key를 사용하여 ChatGPT와 직접 대화하며 위에서 배운 기법을 연습합니다.</p>
+                <Link className="btn btn-cta" to="/practice">
+                  AI 실습 시작하기
+                  <svg className="btn-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M3 8h10M9 4l4 4-4 4" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </section>
 
         </div>
       </section>

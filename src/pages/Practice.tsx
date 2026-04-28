@@ -212,8 +212,9 @@ const Practice = (): ReactElement => {
     <>
       <SEOHead title="AI 실습" description="ChatGPT와 직접 대화하며 프롬프트를 실습합니다" />
 
-      <section className="page-header">
+      <section className="page-header-ed">
         <div className="container">
+          <div className="eyebrow">AI Practice</div>
           <h2>AI 실습</h2>
           <p>ChatGPT와 직접 대화하며 프롬프트 작성을 실습합니다</p>
         </div>

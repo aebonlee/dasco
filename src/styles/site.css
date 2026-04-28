@@ -28,6 +28,50 @@
   font-weight: 300;
 }
 
+/* ── Page Header Editorial (Sub-pages) ── */
+.page-header-ed {
+  padding: calc(var(--nav-height) + 48px) 0 40px;
+  background: var(--navy-50);
+  border-bottom: 2px solid var(--navy-800);
+  position: relative;
+}
+.page-header-ed .container { position: relative; z-index: 1; }
+.page-header-ed .eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--s-4);
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+.page-header-ed .eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: var(--gold);
+}
+.page-header-ed h2 {
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--navy-800);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.page-header-ed p {
+  font-size: 16px;
+  color: var(--ink-soft);
+  max-width: 560px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+[data-theme="dark"] .page-header-ed {
+  background: var(--bg-light-gray);
+  border-bottom-color: var(--border-medium);
+}
+
 /* ═══════════════════════════════════════
    Editorial Home — Sections
    ═══════════════════════════════════════ */
@@ -788,29 +832,29 @@
 .lecture-content .tip-box {
   margin: 1rem 0;
   padding: 1rem 1.2rem;
-  background: #E8F5E9;
-  border-left: 4px solid #4CAF50;
+  background: var(--navy-50);
+  border-left: 4px solid var(--gold);
   border-radius: 0 8px 8px 0;
   font-size: 0.9rem;
 }
 
 [data-theme="dark"] .lecture-content .tip-box {
-  background: #1b3a1b;
-  border-left-color: #66BB6A;
+  background: #1a2540;
+  border-left-color: var(--primary-blue-light);
 }
 
 .lecture-content .example-box {
   margin: 1rem 0;
   padding: 1rem 1.2rem;
-  background: #E3F2FD;
-  border-left: 4px solid #2196F3;
+  background: var(--navy-100);
+  border-left: 4px solid var(--navy-400);
   border-radius: 0 8px 8px 0;
   font-size: 0.9rem;
 }
 
 [data-theme="dark"] .lecture-content .example-box {
-  background: #1a2d40;
-  border-left-color: #42A5F5;
+  background: #1a2540;
+  border-left-color: var(--primary-blue-light);
 }
 
 .lecture-content .prompt-example {
@@ -909,7 +953,7 @@
 }
 
 .chat-message.assistant .avatar {
-  background: #4CAF50;
+  background: var(--gold);
   color: #fff;
 }
 
@@ -1128,7 +1172,7 @@
 }
 
 .admin-key-status .status-active {
-  color: #2E7D32;
+  color: var(--navy-700);
 }
 
 .admin-key-status .status-inactive {
@@ -1154,15 +1198,15 @@
 }
 
 .key-status-bar.active {
-  background: #E8F5E9;
-  color: #2E7D32;
-  border: 1px solid #C8E6C9;
+  background: var(--navy-50);
+  color: var(--navy-700);
+  border: 1px solid var(--line);
 }
 
 [data-theme="dark"] .key-status-bar.active {
-  background: #1b3a1b;
-  border-color: #2E7D32;
-  color: #81C784;
+  background: #1a2540;
+  border-color: var(--primary-blue);
+  color: var(--primary-blue-light);
 }
 
 .key-switch-btn {
@@ -1258,8 +1302,8 @@
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: #4CAF50;
-  color: #fff;
+  background: var(--navy-800);
+  color: var(--gold);
   display: flex;
   align-items: center;
   justify-content: center;

@@ -193,7 +193,7 @@ const Home = (): ReactElement => {
       <div className="marquee">
         <div className="marquee-track">
           <span>
-            {[0, 1].map((i) => (
+            {[0, 1, 2, 3].map((i) => (
               <span key={i}>
                 {marqueePhrase.split(' · ').map((w, j) => (
                   <span key={`${i}-${j}`}>{w}<span className="dot">&#10022;</span></span>
