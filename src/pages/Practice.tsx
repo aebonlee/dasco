@@ -30,6 +30,13 @@ const PRESET_PROMPTS = [
   { label: '코드 작성', prompt: '파이썬으로 엑셀 파일을 읽어서 데이터를 정리하고 차트를 만드는 코드를 작성해줘. pandas와 matplotlib을 사용해줘.' },
 ];
 
+const GUIDE_STEPS = [
+  { n: '01', title: '모델 선택', desc: '업무 목적에 맞는 AI 모델을 선택합니다.' },
+  { n: '02', title: '프롬프트 작성', desc: '역할 + 맥락 + 지시 + 형식을 갖춰 입력합니다.' },
+  { n: '03', title: 'AI와 대화', desc: '프롬프트를 전송하고 AI 응답을 확인합니다.' },
+  { n: '04', title: '결과 개선', desc: '"더 자세히", "표로 정리해줘" 등 후속 질문으로 다듬습니다.' },
+];
+
 const SETTING_KEY = 'openai_api_key';
 
 const Practice = (): ReactElement => {
@@ -39,13 +46,10 @@ const Practice = (): ReactElement => {
   // API Key 상태
   const [sharedKey, setSharedKey] = useState<string | null>(null);
   const [sharedKeyLoading, setSharedKeyLoading] = useState(true);
-  const [personalKey, setPersonalKey] = useState(() => {
-    try { return sessionStorage.getItem('dasco_openai_key') || ''; } catch { return ''; }
-  });
-  const [usePersonalKey, setUsePersonalKey] = useState(false);
   const [adminKeyInput, setAdminKeyInput] = useState('');
   const [adminSaving, setAdminSaving] = useState(false);
-  const [showAdminPanel, setShowAdminPanel] = useState(false);
+  const [showAdminTooltip, setShowAdminTooltip] = useState(false);
+  const tooltipRef = useRef<HTMLDivElement>(null);
 
   // Chat 상태
   const [model, setModel] = useState('gpt-4o-mini');
@@ -61,9 +65,7 @@ const Practice = (): ReactElement => {
       try {
         const key = await getSetting(SETTING_KEY);
         setSharedKey(key);
-        if (key) {
-          setAdminKeyInput(key);
-        }
+        if (key) setAdminKeyInput(key);
       } catch {
         // 테이블 미존재 등 — 무시
       } finally {
@@ -72,18 +74,24 @@ const Practice = (): ReactElement => {
     })();
   }, []);
 
+  // 툴팁 외부 클릭 시 닫기
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (tooltipRef.current && !tooltipRef.current.contains(e.target as Node)) {
+        setShowAdminTooltip(false);
+      }
+    };
+    if (showAdminTooltip) document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [showAdminTooltip]);
+
   // 스크롤
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // 현재 사용할 API Key 결정
-  const activeKey = usePersonalKey ? personalKey.trim() : (sharedKey || personalKey.trim());
-
-  const handlePersonalKeyChange = (value: string) => {
-    setPersonalKey(value);
-    try { sessionStorage.setItem('dasco_openai_key', value); } catch { /* */ }
-  };
+  // 현재 사용할 API Key
+  const activeKey = sharedKey || '';
 
   // 관리자: API Key 저장
   const handleAdminSave = async () => {
@@ -95,7 +103,8 @@ const Practice = (): ReactElement => {
     try {
       await setSetting(SETTING_KEY, adminKeyInput.trim());
       setSharedKey(adminKeyInput.trim());
-      toast.showToast('API Key가 저장되었습니다. 모든 사용자가 이용할 수 있습니다.', 'success');
+      toast.showToast('API Key가 저장되었습니다.', 'success');
+      setShowAdminTooltip(false);
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : '저장 실패';
       toast.showToast(`저장 오류: ${msg}`, 'error');
@@ -106,7 +115,7 @@ const Practice = (): ReactElement => {
 
   // 관리자: API Key 삭제
   const handleAdminDelete = async () => {
-    if (!confirm('공유 API Key를 삭제하시겠습니까?\n삭제 후 사용자들은 개인 키를 입력해야 합니다.')) return;
+    if (!confirm('공유 API Key를 삭제하시겠습니까?')) return;
     setAdminSaving(true);
     try {
       await deleteSetting(SETTING_KEY);
@@ -128,7 +137,7 @@ const Practice = (): ReactElement => {
     if (!activeKey) {
       setMessages(prev => [...prev, {
         role: 'system',
-        content: sharedKey ? '공유 API Key가 설정되어 있지 않습니다.' : 'API Key를 먼저 입력해주세요. (sk-... 형태)'
+        content: '관리자가 아직 API Key를 설정하지 않았습니다. 관리자에게 문의해주세요.'
       }]);
       return;
     }
@@ -168,7 +177,6 @@ const Practice = (): ReactElement => {
 
       setMessages(prev => [...prev, { role: 'assistant', content: assistantContent }]);
 
-      // 토큰 사용량 표시
       if (data.usage) {
         const { prompt_tokens, completion_tokens, total_tokens } = data.usage;
         setMessages(prev => [...prev, {
@@ -185,7 +193,7 @@ const Practice = (): ReactElement => {
     } finally {
       setLoading(false);
     }
-  }, [input, loading, activeKey, messages, model, sharedKey]);
+  }, [input, loading, activeKey, messages, model]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -221,191 +229,188 @@ const Practice = (): ReactElement => {
       </section>
 
       <section className="section">
-        <div className="chatgpt-practice">
+        <div className="container">
+          <div className="practice-layout">
 
-          {/* 관리자 패널 */}
-          {isAdmin && (
-            <div className="admin-key-panel">
-              <button
-                className="admin-panel-toggle"
-                onClick={() => setShowAdminPanel(!showAdminPanel)}
-              >
-                <span>관리자: API Key 관리</span>
-                <span style={{ fontSize: '0.75rem' }}>{showAdminPanel ? '접기' : '펼치기'}</span>
-              </button>
-              {showAdminPanel && (
-                <div className="admin-panel-body">
-                  <p className="admin-panel-desc">
-                    여기서 설정한 OpenAI API Key는 모든 사이트 방문자가 공유합니다.
-                    Key를 설정하면 방문자들이 개인 Key 없이도 ChatGPT를 이용할 수 있습니다.
-                  </p>
-                  <div className="admin-key-row">
-                    <input
-                      type="password"
-                      value={adminKeyInput}
-                      onChange={(e) => setAdminKeyInput(e.target.value)}
-                      placeholder="sk-proj-..."
-                      className="admin-key-input"
-                    />
-                    <button
-                      onClick={handleAdminSave}
-                      disabled={adminSaving}
-                      className="admin-key-btn save"
-                    >
-                      {adminSaving ? '저장 중...' : '저장'}
-                    </button>
-                    {sharedKey && (
-                      <button
-                        onClick={handleAdminDelete}
-                        disabled={adminSaving}
-                        className="admin-key-btn delete"
-                      >
-                        삭제
-                      </button>
-                    )}
-                  </div>
-                  <div className="admin-key-status">
+            {/* ── 왼쪽 사이드바 ── */}
+            <aside className="practice-sidebar">
+              <div className="ps-block">
+                <h4 className="ps-label">실습 가이드</h4>
+                <ol className="ps-steps">
+                  {GUIDE_STEPS.map((s) => (
+                    <li key={s.n} className="ps-step">
+                      <span className="ps-step-num">{s.n}</span>
+                      <div>
+                        <strong>{s.title}</strong>
+                        <p>{s.desc}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              <div className="ps-block">
+                <h4 className="ps-label">프롬프트 5원칙</h4>
+                <ul className="ps-rules">
+                  <li><strong>역할</strong> &mdash; &quot;너는 ~전문가야&quot;</li>
+                  <li><strong>맥락</strong> &mdash; 배경·상황 설명</li>
+                  <li><strong>지시</strong> &mdash; 구체적 작업 명시</li>
+                  <li><strong>형식</strong> &mdash; 표/목록/분량 지정</li>
+                  <li><strong>예시</strong> &mdash; 원하는 결과물 예시</li>
+                </ul>
+              </div>
+
+              <div className="ps-block">
+                <h4 className="ps-label">사용 가능 모델</h4>
+                <ul className="ps-models">
+                  {MODELS.map(m => (
+                    <li key={m.id} className={m.id === model ? 'active' : ''}>
+                      <strong>{m.label}</strong>
+                      <span>{m.desc}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* API Key 상태 (관리자용) */}
+              {isAdmin && (
+                <div className="ps-block ps-admin">
+                  <h4 className="ps-label">API Key 상태</h4>
+                  <div className={`ps-key-status ${sharedKey ? 'active' : 'inactive'}`}>
                     {sharedKey
-                      ? <span className="status-active">공유 Key 활성 (sk-...{sharedKey.slice(-6)})</span>
-                      : <span className="status-inactive">공유 Key 미설정</span>
+                      ? <>활성 (sk-...{sharedKey.slice(-4)})</>
+                      : '미설정'
                     }
                   </div>
                 </div>
               )}
-            </div>
-          )}
+            </aside>
 
-          {/* API Key 상태 안내 */}
-          {sharedKeyLoading ? (
-            <div className="key-status-bar loading">API Key 확인 중...</div>
-          ) : sharedKey && !usePersonalKey ? (
-            <div className="key-status-bar active">
-              <span>관리자가 설정한 API Key로 ChatGPT를 이용할 수 있습니다.</span>
-              <button onClick={() => setUsePersonalKey(true)} className="key-switch-btn">
-                개인 Key 사용
-              </button>
-            </div>
-          ) : (
-            <div className="api-key-section">
-              <div className="key-section-header">
-                <h4>OpenAI API Key 입력</h4>
-                {sharedKey && (
-                  <button onClick={() => setUsePersonalKey(false)} className="key-switch-btn">
-                    공유 Key로 전환
+            {/* ── 오른쪽 메인 영역 ── */}
+            <main className="practice-main">
+
+              {/* 관리자 풍선 도움말 (FAB + Tooltip) */}
+              {isAdmin && (
+                <div className="admin-fab-wrapper" ref={tooltipRef}>
+                  <button
+                    className={`admin-fab ${showAdminTooltip ? 'open' : ''}`}
+                    onClick={() => setShowAdminTooltip(!showAdminTooltip)}
+                    title="API Key 관리"
+                  >
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4" />
+                    </svg>
                   </button>
-                )}
-              </div>
-              <input
-                type="password"
-                value={personalKey}
-                onChange={(e) => handlePersonalKeyChange(e.target.value)}
-                placeholder="sk-proj-..."
-                autoComplete="off"
-              />
-              <div className="key-help">
-                <strong>API Key 발급:</strong>{' '}
-                <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer">
-                  platform.openai.com/api-keys
-                </a>
-                {' '}에서 &quot;Create new secret key&quot; 클릭
-              </div>
-            </div>
-          )}
-
-          {/* 모델 선택 + 프리셋 */}
-          <div className="chat-toolbar">
-            <div className="model-selector">
-              <label>모델:</label>
-              <select value={model} onChange={(e) => setModel(e.target.value)}>
-                {MODELS.map(m => (
-                  <option key={m.id} value={m.id}>{m.label} — {m.desc}</option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          <div className="preset-prompts">
-            <h4>실습용 프롬프트 템플릿</h4>
-            <div className="preset-list">
-              {PRESET_PROMPTS.map((p, i) => (
-                <button key={i} className="preset-btn" onClick={() => handlePreset(p.prompt)}>
-                  {p.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Chat */}
-          <div className={`chat-container ${!keyReady ? 'disabled' : ''}`}>
-            <div className="chat-messages">
-              {messages.length === 0 && (
-                <div className="chat-empty">
-                  <div className="chat-empty-icon">AI</div>
-                  <p>ChatGPT와 대화를 시작하세요</p>
-                  <span>위의 프롬프트 템플릿을 클릭하거나, 직접 메시지를 입력하세요.</span>
+                  {showAdminTooltip && (
+                    <div className="admin-tooltip">
+                      <div className="admin-tooltip-arrow" />
+                      <h5>API Key 관리</h5>
+                      <p>설정한 Key는 모든 방문자가 공유합니다.</p>
+                      <input
+                        type="password"
+                        value={adminKeyInput}
+                        onChange={(e) => setAdminKeyInput(e.target.value)}
+                        placeholder="sk-proj-..."
+                      />
+                      <div className="admin-tooltip-actions">
+                        <button onClick={handleAdminSave} disabled={adminSaving} className="save">
+                          {adminSaving ? '저장 중...' : '저장'}
+                        </button>
+                        {sharedKey && (
+                          <button onClick={handleAdminDelete} disabled={adminSaving} className="del">
+                            삭제
+                          </button>
+                        )}
+                      </div>
+                      <div className={`admin-tooltip-status ${sharedKey ? 'on' : 'off'}`}>
+                        {sharedKey ? `활성 (sk-...${sharedKey.slice(-4)})` : '미설정'}
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
-              {messages.map((msg, i) => (
-                <div key={i} className={`chat-message ${msg.role}`}>
-                  <div className="avatar">
-                    {msg.role === 'user' ? (user?.email?.charAt(0).toUpperCase() || 'U') : msg.role === 'assistant' ? 'AI' : 'i'}
-                  </div>
-                  <div className="bubble">{msg.content}</div>
-                </div>
-              ))}
-              {loading && (
-                <div className="chat-message assistant">
-                  <div className="avatar">AI</div>
-                  <div className="bubble typing">
-                    <span></span><span></span><span></span>
-                  </div>
+
+              {/* API Key 상태 바 (일반 사용자용) */}
+              {!sharedKeyLoading && !sharedKey && !isAdmin && (
+                <div className="key-status-bar" style={{ background: '#FFF3E0', color: '#795548', border: '1px solid #FFE0B2' }}>
+                  관리자가 아직 API Key를 설정하지 않았습니다. 관리자에게 문의해주세요.
                 </div>
               )}
-              <div ref={messagesEndRef} />
-            </div>
 
-            <div className="chat-input-area">
-              <textarea
-                ref={textareaRef}
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder={keyReady ? '프롬프트를 입력하세요... (Enter: 전송, Shift+Enter: 줄바꿈)' : 'API Key를 먼저 설정해주세요'}
-                disabled={loading || !keyReady}
-                rows={2}
-              />
-              <button onClick={sendMessage} disabled={loading || !input.trim() || !keyReady}>
-                {loading ? '전송 중...' : '전송'}
-              </button>
-              <button onClick={clearChat} disabled={loading} className="btn-reset">
-                초기화
-              </button>
-            </div>
+              {/* 모델 선택 */}
+              <div className="chat-toolbar">
+                <div className="model-selector">
+                  <label>모델:</label>
+                  <select value={model} onChange={(e) => setModel(e.target.value)}>
+                    {MODELS.map(m => (
+                      <option key={m.id} value={m.id}>{m.label} — {m.desc}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {/* 프리셋 프롬프트 */}
+              <div className="preset-prompts">
+                <h4>실습용 프롬프트 템플릿</h4>
+                <div className="preset-list">
+                  {PRESET_PROMPTS.map((p, i) => (
+                    <button key={i} className="preset-btn" onClick={() => handlePreset(p.prompt)}>
+                      {p.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Chat */}
+              <div className={`chat-container ${!keyReady ? 'disabled' : ''}`}>
+                <div className="chat-messages">
+                  {messages.length === 0 && (
+                    <div className="chat-empty">
+                      <div className="chat-empty-icon">AI</div>
+                      <p>ChatGPT와 대화를 시작하세요</p>
+                      <span>위의 프롬프트 템플릿을 클릭하거나, 직접 메시지를 입력하세요.</span>
+                    </div>
+                  )}
+                  {messages.map((msg, i) => (
+                    <div key={i} className={`chat-message ${msg.role}`}>
+                      <div className="avatar">
+                        {msg.role === 'user' ? (user?.email?.charAt(0).toUpperCase() || 'U') : msg.role === 'assistant' ? 'AI' : 'i'}
+                      </div>
+                      <div className="bubble">{msg.content}</div>
+                    </div>
+                  ))}
+                  {loading && (
+                    <div className="chat-message assistant">
+                      <div className="avatar">AI</div>
+                      <div className="bubble typing">
+                        <span></span><span></span><span></span>
+                      </div>
+                    </div>
+                  )}
+                  <div ref={messagesEndRef} />
+                </div>
+
+                <div className="chat-input-area">
+                  <textarea
+                    ref={textareaRef}
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    placeholder={keyReady ? '프롬프트를 입력하세요... (Enter: 전송, Shift+Enter: 줄바꿈)' : 'API Key가 설정되지 않았습니다'}
+                    disabled={loading || !keyReady}
+                    rows={2}
+                  />
+                  <button onClick={sendMessage} disabled={loading || !input.trim() || !keyReady}>
+                    {loading ? '전송 중...' : '전송'}
+                  </button>
+                  <button onClick={clearChat} disabled={loading} className="btn-reset">
+                    초기화
+                  </button>
+                </div>
+              </div>
+            </main>
+
           </div>
-
-          {/* Tips */}
-          <div className="practice-tips">
-            <h4>프롬프트 작성 팁</h4>
-            <div className="tips-grid">
-              <div className="tip-card">
-                <strong>역할 부여</strong>
-                <p>&quot;너는 도로안전 전문 컨설턴트야&quot;로 시작하면 전문적인 답변을 받을 수 있습니다.</p>
-              </div>
-              <div className="tip-card">
-                <strong>구체적 지시</strong>
-                <p>원하는 형식, 분량, 어투를 명확하게 명시하세요.</p>
-              </div>
-              <div className="tip-card">
-                <strong>후속 질문</strong>
-                <p>&quot;더 자세히&quot;, &quot;표로 정리해줘&quot; 등으로 대화를 이어가세요.</p>
-              </div>
-              <div className="tip-card">
-                <strong>예시 제공</strong>
-                <p>원하는 결과물의 예시를 함께 주면 정확도가 높아집니다.</p>
-              </div>
-            </div>
-          </div>
-
         </div>
       </section>
     </>
