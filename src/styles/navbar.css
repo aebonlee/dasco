@@ -1,54 +1,112 @@
 /* ============================================
-   Navbar Styles — Glassmorphism
+   Navbar Styles — Navy Editorial
    ============================================ */
 
+/* ── Top Bar ── */
+.topbar {
+  background: var(--navy-800);
+  color: rgba(255,255,255,0.88);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+.topbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  white-space: nowrap;
+}
+.topbar-left { display: flex; gap: var(--s-5); align-items: center; }
+.topbar-tag { display: inline-flex; align-items: center; gap: var(--s-2); white-space: nowrap; }
+.topbar-tag::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.topbar-tag-extra { padding-left: var(--s-5); border-left: 1px solid rgba(255,255,255,0.22); }
+.topbar-right { display: flex; gap: var(--s-5); align-items: center; }
+.topbar-right button,
+.topbar-right span {
+  font-size: 12px;
+  color: rgba(255,255,255,0.88);
+  white-space: nowrap;
+  transition: color 0.2s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+.topbar-right button:hover { color: #fff; }
+
+/* ── Navbar ── */
 .navbar {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    background: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    border-bottom: 1px solid var(--border-light);
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--line);
     transition: var(--transition-base);
 }
 
 .navbar.scrolled {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.98);
     border-bottom-color: transparent;
     box-shadow: var(--shadow-md);
 }
 
 .nav-wrapper {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
     height: var(--nav-height);
+    gap: var(--s-7);
 }
 
+/* ── Brand ── */
 .logo a {
     text-decoration: none;
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    gap: var(--s-3);
+    white-space: nowrap;
+    line-height: 1;
 }
 
-.logo h1 {
-    font-size: 28px;
+.brand-mark {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--navy-800);
+    letter-spacing: -0.01em;
+}
+.brand-ampersand { color: var(--gold); font-weight: 700; }
+.brand-accent { color: var(--gold); }
+.brand-sep {
+    display: inline-block;
+    width: 1px; height: 18px;
+    background: var(--line-strong);
+}
+.brand-sub {
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: -0.5px;
+    letter-spacing: 0.18em;
+    color: var(--navy-500);
+    text-transform: uppercase;
 }
 
-.brand-dream { color: var(--primary-blue); }
-.brand-it { color: var(--text-primary); }
-.brand-biz { color: var(--primary-blue-dark); }
+/* Legacy brand classes (for other components) */
+.brand-dream { color: var(--navy-800); }
+.brand-it { color: var(--gold); }
+.brand-biz { color: var(--navy-500); }
 
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 0;
+    gap: var(--s-7);
     align-items: center;
+    justify-content: center;
 }
 
 .nav-item-dropdown {
@@ -57,10 +115,10 @@
 
 .nav-link {
     display: block;
-    padding: 12px 14px;
-    color: var(--text-primary);
+    padding: var(--s-2) 0;
+    color: var(--navy-700);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 14px;
     transition: color 0.2s ease;
     position: relative;
@@ -68,45 +126,34 @@
 
 .nav-link:hover,
 .nav-link.active {
-    color: var(--primary-blue);
+    color: var(--navy-800);
 }
 
-.nav-link::after {
+.nav-link.active::after {
     content: '';
     position: absolute;
-    bottom: -1px;
-    left: 14px;
-    right: 14px;
-    height: 3px;
-    background: var(--primary-blue);
-    border-radius: 2px;
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
-    transform: scaleX(1);
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 2px;
+    background: var(--gold);
 }
 
 .dropdown-menu {
     position: absolute;
-    top: 100%;
-    left: 0;
-    min-width: 220px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-lg);
+    top: calc(100% + var(--s-3));
+    left: -16px;
+    min-width: 200px;
+    background: var(--bg-white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: 0 16px 40px rgba(15,27,51,0.10);
     list-style: none;
-    padding: 8px 0;
+    padding: var(--s-2) 0;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
-    margin-top: -1px;
+    transform: translateY(-4px);
+    transition: all 0.2s ease;
 }
 
 .nav-item-dropdown:hover .dropdown-menu,
@@ -122,18 +169,17 @@
 
 .dropdown-menu li a {
     display: block;
-    padding: 12px 20px;
-    color: var(--text-primary);
+    padding: var(--s-3) var(--s-5);
+    color: var(--navy-700);
     text-decoration: none;
-    font-size: 14px;
-    transition: all 0.2s ease;
-    border-radius: 4px;
-    margin: 0 4px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.15s ease;
 }
 
 .dropdown-menu li a:hover {
-    background: rgba(0, 70, 200, 0.06);
-    color: var(--primary-blue);
+    background: var(--navy-50);
+    color: var(--navy-800);
 }
 
 .nav-actions {
@@ -145,8 +191,8 @@
 /* ── Search Button ── */
 .nav-search-btn {
     background: transparent;
-    border: 1px solid var(--border-medium);
-    border-radius: var(--radius-sm);
+    border: 1px solid var(--line);
+    border-radius: 50%;
     width: 40px;
     height: 40px;
     display: flex;
@@ -158,13 +204,13 @@
 }
 
 .nav-search-btn:hover {
-    background: var(--bg-light-gray);
-    border-color: var(--primary-blue);
+    border-color: var(--navy-800);
+    background: var(--navy-50);
 }
 
 .nav-search-btn svg {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     color: var(--text-secondary);
 }
 
@@ -175,27 +221,26 @@
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: var(--primary-blue);
+    background: var(--navy-800);
     color: white;
     font-size: 11px;
     font-weight: 700;
     text-decoration: none;
     transition: var(--transition-base);
-    border: 2px solid var(--primary-blue);
+    border: 2px solid var(--navy-800);
     cursor: pointer;
 }
 
 .lang-switcher:hover {
     background: white;
-    color: var(--primary-blue);
+    color: var(--navy-800);
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 70, 200, 0.2);
 }
 
 .theme-toggle {
     background: transparent;
-    border: 1px solid var(--border-medium);
-    border-radius: var(--radius-sm);
+    border: 1px solid var(--line);
+    border-radius: 50%;
     width: 40px;
     height: 40px;
     display: flex;
@@ -206,8 +251,8 @@
 }
 
 .theme-toggle:hover {
-    background: var(--bg-light-gray);
-    border-color: var(--primary-blue);
+    border-color: var(--navy-800);
+    background: var(--navy-50);
 }
 
 .theme-toggle svg {
@@ -221,24 +266,19 @@
 .moon-icon { display: none; }
 .auto-icon { display: none; }
 
-/* auto mode → show auto icon */
 .theme-toggle[data-mode="auto"] .auto-icon { display: block; }
-
-/* light mode → show moon icon (click to go dark) */
 .theme-toggle[data-mode="light"] .moon-icon { display: block; }
-
-/* dark mode → show sun icon (click to go auto) */
 .theme-toggle[data-mode="dark"] .sun-icon { display: block; }
 
-/* ── Color Picker (Palette Icon + Tooltip) ── */
+/* ── Color Picker ── */
 .color-picker-wrapper {
     position: relative;
 }
 
 .color-picker-btn {
     background: transparent;
-    border: 1px solid var(--border-medium);
-    border-radius: var(--radius-sm);
+    border: 1px solid var(--line);
+    border-radius: 50%;
     width: 40px;
     height: 40px;
     display: flex;
@@ -249,8 +289,8 @@
 }
 
 .color-picker-btn:hover {
-    background: var(--bg-light-gray);
-    border-color: var(--primary-blue);
+    border-color: var(--navy-800);
+    background: var(--navy-50);
 }
 
 .color-picker-btn svg {
@@ -275,7 +315,7 @@
     gap: 8px;
     padding: 10px 14px;
     background: var(--bg-white);
-    border: 1px solid var(--border-light);
+    border: 1px solid var(--line);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
     animation: tooltip-fade-in 0.2s ease;
@@ -289,8 +329,8 @@
     width: 12px;
     height: 12px;
     background: var(--bg-white);
-    border-left: 1px solid var(--border-light);
-    border-top: 1px solid var(--border-light);
+    border-left: 1px solid var(--line);
+    border-top: 1px solid var(--line);
 }
 
 @keyframes tooltip-fade-in {
@@ -366,14 +406,14 @@
 }
 
 .nav-user-btn:hover .nav-user-avatar-placeholder {
-  box-shadow: 0 0 0 2px var(--primary-blue);
+  box-shadow: 0 0 0 2px var(--gold);
 }
 
 .nav-user-avatar-placeholder {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--primary-blue);
+  background: var(--navy-800);
   color: white;
   font-size: 13px;
   font-weight: 700;
@@ -391,9 +431,9 @@
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 30px rgba(15, 27, 51, 0.12);
   padding: 0;
   z-index: 999;
   animation: user-dropdown-fade 0.2s ease;
@@ -408,8 +448,8 @@
   width: 12px;
   height: 12px;
   background: rgba(255, 255, 255, 0.98);
-  border-left: 1px solid var(--border-light);
-  border-top: 1px solid var(--border-light);
+  border-left: 1px solid var(--line);
+  border-top: 1px solid var(--line);
   transform: rotate(45deg);
   z-index: 1;
 }
@@ -424,14 +464,14 @@
   align-items: center;
   gap: 10px;
   padding: 14px 16px;
-  background: rgba(0, 70, 200, 0.03);
+  background: var(--navy-50);
 }
 
 .dropdown-user-avatar {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: var(--primary-blue);
+  background: var(--navy-800);
   color: white;
   font-size: 14px;
   font-weight: 700;
@@ -489,13 +529,13 @@
 }
 
 .dropdown-menu-item:hover {
-  background: rgba(0, 70, 200, 0.06);
-  color: var(--primary-blue);
+  background: var(--navy-50);
+  color: var(--navy-800);
 }
 
 .dropdown-menu-item:hover svg {
   opacity: 1;
-  color: var(--primary-blue);
+  color: var(--navy-800);
 }
 
 .dropdown-menu-item.logout {
@@ -512,32 +552,29 @@
 
 .nav-user-dropdown .divider {
   height: 1px;
-  background: var(--border-light);
+  background: var(--line);
   margin: 0;
 }
 
 .nav-login-btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 7px 18px;
-  border-radius: 20px;
-  background: var(--primary-blue);
+  padding: var(--s-3) var(--s-5);
+  border-radius: var(--radius);
+  background: var(--navy-800);
   color: white !important;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none !important;
   transition: all 0.2s ease;
   white-space: nowrap;
-  letter-spacing: 0.3px;
-  border: none;
+  border: 1px solid var(--navy-800);
 }
 
 .nav-login-btn:hover {
-  background: var(--primary-blue-dark);
+  background: var(--navy-900);
   text-decoration: none !important;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 70, 200, 0.3);
 }
 
 .nav-login-btn::after {
@@ -545,17 +582,17 @@
 }
 
 /* ── Navbar Responsive ── */
+@media (max-width: 1100px) {
+  .nav-menu { display: none; }
+  .nav-wrapper { grid-template-columns: 1fr auto; gap: var(--s-4); }
+  .topbar { font-size: 11px; }
+  .topbar-left { gap: var(--s-4); }
+  .topbar-right { gap: var(--s-4); }
+  .topbar-tag-extra { display: none; }
+  .mobile-toggle { display: flex; }
+}
+
 @media (max-width: 768px) {
-  .theme-toggle {
-    width: 32px;
-    height: 32px;
-  }
-
-  .theme-toggle svg {
-    width: 16px;
-    height: 16px;
-  }
-
   .color-picker-btn {
     width: 32px;
     height: 32px;
@@ -586,12 +623,6 @@
     height: 16px;
   }
 
-  .lang-switcher {
-    width: 28px;
-    height: 28px;
-    font-size: 9px;
-  }
-
   .nav-login-btn {
     padding: 5px 14px;
     font-size: 12px;
@@ -602,4 +633,10 @@
     height: 28px;
     font-size: 12px;
   }
+
+  .topbar .container {
+    height: 36px;
+    font-size: 10px;
+  }
+  .topbar-right { display: none; }
 }

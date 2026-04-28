@@ -9,26 +9,22 @@ const Footer = (): ReactElement => {
   return (
     <footer className="footer">
       <div className="container">
-        <div className="footer-content">
-          <div className="footer-brand">
-            <h3>
-              {site.brand.parts.map((part, i) => (
-                <span key={i} className={part.className}>
-                  {part.text}
-                </span>
-              ))}
-            </h3>
-            <p>{t('footer.tagline')}</p>
+        <div className="footer-grid">
+          <div>
+            <div className="footer-brand-mark">Dasco &amp; AI</div>
+            <p className="footer-tag">
+              다스코(주) 직원을 위한 생성형 인공지능 업무 활용 교육 플랫폼.
+              DreamIT Biz Group이 운영합니다.
+            </p>
             <div className="company-info">
               <p><strong>{site.company.name}</strong></p>
               <p>대표이사: {site.company.ceo}</p>
               <p>사업자등록번호: {site.company.bizNumber}</p>
               {site.company.salesNumber && <p>통신판매신고번호: {site.company.salesNumber}</p>}
-              {site.company.publisherNumber && <p>출판사 신고번호: {site.company.publisherNumber}</p>}
             </div>
           </div>
-          <div className="footer-links">
-            <h4>{t('footer.quickLinks')}</h4>
+          <div>
+            <h5>{t('footer.quickLinks')}</h5>
             <ul>
               {site.footerLinks.map((link, i) => (
                 <li key={i}>
@@ -37,14 +33,22 @@ const Footer = (): ReactElement => {
               ))}
             </ul>
           </div>
-          <div className="footer-contact">
-            <h4>{t('footer.contact')}</h4>
-            <p>{site.company.address}</p>
-            <p>{site.company.email}</p>
-            <p>{site.company.phone}</p>
-            {site.company.kakao && <p>카카오톡: {site.company.kakao}</p>}
-            {site.company.businessHours && <p className="business-hours">{site.company.businessHours}</p>}
-
+          <div>
+            <h5>패밀리</h5>
+            <ul>
+              <li><a href={site.parentSite.url} target="_blank" rel="noopener noreferrer">{site.parentSite.name}</a></li>
+              {site.familySites.map((s, i) => (
+                <li key={i}><a href={s.url} target="_blank" rel="noopener noreferrer">{s.name}</a></li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h5>문의</h5>
+            <ul>
+              <li>{site.company.email}</li>
+              <li>{site.company.phone}</li>
+              {site.company.businessHours && <li className="footer-muted">{site.company.businessHours}</li>}
+            </ul>
             <div className="footer-family">
               <select
                 defaultValue=""
@@ -63,7 +67,8 @@ const Footer = (): ReactElement => {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; 2020-{new Date().getFullYear()} DreamIT Biz. All rights reserved.</p>
+          <span>&copy; 2025 &mdash; {new Date().getFullYear()} DreamIT Biz &middot; All rights reserved</span>
+          <span className="footer-version">v.2026.04 &middot; Editorial</span>
         </div>
       </div>
     </footer>
