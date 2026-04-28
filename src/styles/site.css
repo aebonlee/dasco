@@ -2,6 +2,31 @@
    다스코(주) 생성형AI 교육 - 사이트 전용 스타일
    ============================================ */
 
+/* ── Page Header (Hero for sub-pages) ── */
+.page-header {
+  background: var(--hero-bg);
+  padding: calc(var(--nav-height) + 56px) 0 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.page-header p {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 560px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
 /* Welcome Section */
 .site-welcome {
   text-align: center;
@@ -109,7 +134,7 @@
   display: inline-block;
   margin-top: 1.2rem;
   padding: 10px 24px;
-  background: var(--primary-color);
+  background: var(--primary-blue);
   color: #fff;
   border-radius: 8px;
   text-decoration: none;
@@ -154,7 +179,7 @@
   top: 0;
   bottom: 0;
   width: 3px;
-  background: var(--primary-color);
+  background: var(--primary-blue);
   opacity: 0.3;
   border-radius: 2px;
 }
@@ -175,7 +200,7 @@
   top: 1.8rem;
   width: 14px;
   height: 14px;
-  background: var(--primary-color);
+  background: var(--primary-blue);
   border-radius: 50%;
   border: 3px solid var(--bg-primary);
 }
@@ -183,7 +208,7 @@
 .timeline-item .time-label {
   display: inline-block;
   padding: 2px 10px;
-  background: var(--primary-color);
+  background: var(--primary-blue);
   color: #fff;
   border-radius: 4px;
   font-size: 0.8rem;
@@ -225,7 +250,7 @@
   font-weight: 700;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--primary-color);
+  border-bottom: 2px solid var(--primary-blue);
   color: var(--text-primary);
 }
 
@@ -374,7 +399,7 @@
 }
 
 .chat-message.user .avatar {
-  background: var(--primary-color);
+  background: var(--primary-blue);
   color: #fff;
 }
 
@@ -399,7 +424,7 @@
 }
 
 .chat-message.user .bubble {
-  background: var(--primary-color);
+  background: var(--primary-blue);
   color: #fff;
   border-bottom-right-radius: 4px;
 }
@@ -455,7 +480,7 @@
 
 .chat-input-area button {
   padding: 10px 20px;
-  background: var(--primary-color);
+  background: var(--primary-blue);
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -505,8 +530,8 @@
 }
 
 .preset-btn:hover {
-  border-color: var(--primary-color);
-  color: var(--primary-color);
+  border-color: var(--primary-blue);
+  color: var(--primary-blue);
   background: var(--bg-secondary, #f8f9fa);
 }
 
@@ -529,7 +554,7 @@
 .stat-number {
   font-size: 2.2rem;
   font-weight: 800;
-  color: var(--primary-color);
+  color: var(--primary-blue);
   display: block;
 }
 
