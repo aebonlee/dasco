@@ -13,6 +13,13 @@ export default function PromptEvalHub() {
 
   return (
     <>
+      <section className="page-header-ed">
+        <div className="container">
+          <div className="eyebrow">Prompt Learning</div>
+          <h2>{isKo ? '프롬프트 학습' : 'Prompt Learning'}</h2>
+          <p>{isKo ? '프롬프트 작성 기법, 평가 기준, 실전 예시 및 실습 가이드' : 'Prompt writing techniques, evaluation criteria, examples & practice guide'}</p>
+        </div>
+      </section>
       <GuidePage
         seoTitle="프롬프트 실습"
         seoTitleEn="Prompt Lab"
