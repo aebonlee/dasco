@@ -347,7 +347,7 @@ const Home = (): ReactElement => {
         <div className="container">
           <div className="section-head">
             <div className="section-num">&mdash; 04 / Approach</div>
-            <h2 className="section-title-ed">우리가 가르치는 <span className="accent">방식</span></h2>
+            <h2 className="section-title-ed">학습 하는 <span className="accent">방식</span></h2>
             <div className="section-meta">3 principles</div>
           </div>
           <div className="pillars">
