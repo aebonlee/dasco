@@ -18,7 +18,7 @@ const About = (): ReactElement => {
       <section className="section-ed">
         <div className="container">
           {/* 제작의도 */}
-          <div style={{ maxWidth: '860px', margin: '0 auto' }}>
+          <div>
             <div style={{
               background: 'var(--navy-50)',
               borderLeft: '4px solid var(--gold)',

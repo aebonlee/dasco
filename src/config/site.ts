@@ -64,7 +64,6 @@ const site: SiteConfig = {
       path: '/',
       activePath: '/about',
       dropdown: [
-        { path: '/', labelKey: 'nav.home' },
         { path: '/about', labelKey: 'site.nav.aboutIntent' },
         { path: '/about/company', labelKey: 'site.nav.aboutCompany' },
         { path: '/about/instructor', labelKey: 'site.nav.aboutInstructor' },
