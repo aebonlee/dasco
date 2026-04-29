@@ -30,10 +30,14 @@
 
 /* ── Page Header Editorial (Sub-pages) ── */
 .page-header-ed {
-  padding: calc(var(--nav-height) + 20px) 0 28px;
+  padding: 16px 0 16px;
   background: var(--navy-50);
   border-bottom: 2px solid var(--navy-800);
   position: relative;
+}
+.page-header-ed + .section,
+.page-header-ed + .section-ed {
+  padding-top: 36px;
 }
 .page-header-ed .container { position: relative; z-index: 1; }
 .page-header-ed .eyebrow {
