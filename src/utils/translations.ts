@@ -184,6 +184,7 @@ export const translations: Record<string, Record<string, unknown>> = {
         promptWorkshop: '작성 평가',
         promptTest: '종합 테스트',
         practice: 'AI 실습',
+        promptCases: '프롬프트 사례',
         recommended: '추천사이트'
       },
       home: {
@@ -379,6 +380,7 @@ export const translations: Record<string, Record<string, unknown>> = {
         promptWorkshop: 'Writing Eval',
         promptTest: 'Practice Test',
         practice: 'AI Practice',
+        promptCases: 'Prompt Cases',
         recommended: 'Recommended'
       },
       home: {

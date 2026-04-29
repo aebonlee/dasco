@@ -89,6 +89,7 @@ const site: SiteConfig = {
       ]
     },
     { path: '/practice', labelKey: 'site.nav.practice', activePath: '/practice' },
+    { path: '/prompt-cases', labelKey: 'site.nav.promptCases', activePath: '/prompt-cases' },
     { path: '/recommended', labelKey: 'site.nav.recommended', activePath: '/recommended' },
   ],
 

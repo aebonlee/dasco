@@ -32,6 +32,7 @@ const PromptEvalHub = lazy(() => import('../pages/prompt-eval/PromptEvalHub'));
 const PromptWorkshop = lazy(() => import('../pages/prompt-eval/PromptWorkshop'));
 const PromptPractice = lazy(() => import('../pages/prompt-eval/PromptPractice'));
 const Practice = lazy(() => import('../pages/Practice'));
+const PromptCases = lazy(() => import('../pages/PromptCases'));
 const RecommendedSites = lazy(() => import('../pages/RecommendedSites'));
 
 const Loading = (): ReactElement => (
@@ -87,6 +88,9 @@ const PublicLayout = (): ReactElement => {
 
             {/* AI 실습 (ChatGPT) */}
             <Route path="/practice" element={<Practice />} />
+
+            {/* 업무용 프롬프트 사례 */}
+            <Route path="/prompt-cases" element={<PromptCases />} />
 
             {/* 추천사이트 */}
             <Route path="/recommended" element={<RecommendedSites />} />
