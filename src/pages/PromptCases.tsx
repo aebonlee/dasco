@@ -18,7 +18,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 1,
     category: '보고서/문서',
-    title: '주간 업무 보고서 작성',
+    title: '[초급] 주간 업무 보고서 작성',
     situation: '매주 금요일 팀장에게 제출할 주간 업무 보고서를 작성해야 합니다.',
     prompt: `너는 도로안전 전문 기업의 시설관리팀 담당자야.
 다음 메모를 바탕으로 주간 업무 보고서를 작성해줘.
@@ -41,7 +41,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 2,
     category: '보고서/문서',
-    title: '월간 실적 분석 보고서',
+    title: '[중급] 월간 실적 분석 보고서',
     situation: '6월 실적을 분석하여 경영진에게 보고할 월간 보고서가 필요합니다.',
     prompt: `너는 건설/안전 분야 경영 분석 전문가야.
 다음 6월 실적 데이터를 바탕으로 월간 실적 분석 보고서를 작성해줘.
@@ -67,7 +67,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 3,
     category: '보고서/문서',
-    title: '기안문/품의서 작성',
+    title: '[초급] 기안문/품의서 작성',
     situation: '태풍 피해 복구를 위한 긴급 자재 구매 품의서를 올려야 합니다.',
     prompt: `너는 건설/안전 기업의 행정 업무 전문가야.
 다음 내용으로 품의서를 작성해줘.
@@ -95,7 +95,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 4,
     category: '보고서/문서',
-    title: '프로젝트 완료 보고서',
+    title: '[중급] 프로젝트 완료 보고서',
     situation: '3개월간 진행한 고속도로 안전시설 교체 프로젝트가 완료되어 최종 보고서를 작성합니다.',
     prompt: `너는 도로안전 프로젝트 매니저야.
 3개월간 진행한 프로젝트 완료 보고서를 작성해줘.
@@ -120,7 +120,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 5,
     category: '보고서/문서',
-    title: '사업 제안서 초안',
+    title: '[중급] 사업 제안서 초안',
     situation: '지자체에 AI 기반 도로 모니터링 시스템 도입을 제안하려 합니다.',
     prompt: `너는 도로안전 ICT 솔루션 영업 전문가야.
 지자체(시청 도로관리과) 대상 사업 제안서 초안을 작성해줘.
@@ -147,7 +147,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 6,
     category: '이메일/공문',
-    title: '거래처 납기 지연 사과 이메일',
+    title: '[초급] 거래처 납기 지연 사과 이메일',
     situation: '원자재 수급 문제로 거래처에 약속한 납기를 지키지 못하게 되었습니다.',
     prompt: `너는 도로안전 장비 기업의 영업팀 과장이야.
 거래처 담당자에게 납기 지연에 대한 사과 이메일을 작성해줘.
@@ -167,7 +167,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 7,
     category: '이메일/공문',
-    title: '견적 요청 이메일',
+    title: '[초급] 견적 요청 이메일',
     situation: '새 프로젝트를 위해 협력업체에 견적을 요청해야 합니다.',
     prompt: `너는 도로안전 기업의 구매팀 담당자야.
 협력업체에 견적 요청 이메일을 작성해줘.
@@ -194,7 +194,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 8,
     category: '이메일/공문',
-    title: '프로젝트 킥오프 안내 이메일',
+    title: '[초급] 프로젝트 킥오프 안내 이메일',
     situation: '새 프로젝트 시작을 관계자들에게 알리고 킥오프 미팅을 안내해야 합니다.',
     prompt: `너는 도로안전 기업의 프로젝트 매니저야.
 프로젝트 관계자에게 킥오프 미팅 안내 이메일을 작성해줘.
@@ -219,7 +219,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 9,
     category: '이메일/공문',
-    title: '영문 비즈니스 이메일 번역',
+    title: '[중급] 영문 비즈니스 이메일 번역',
     situation: '해외 파트너사에 보낼 기술 제휴 제안 이메일을 영문으로 작성해야 합니다.',
     prompt: `너는 도로안전 장비 기업의 해외영업 전문가야.
 다음 내용을 자연스러운 비즈니스 영어 이메일로 작성해줘.
@@ -240,7 +240,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 10,
     category: '이메일/공문',
-    title: '고객 문의 대응 이메일',
+    title: '[초급] 고객 문의 대응 이메일',
     situation: '관공서에서 제품 규격에 대한 기술 문의가 왔습니다.',
     prompt: `너는 도로안전 장비 기업의 기술영업 담당자야.
 관공서(시청 도로관리과)의 기술 문의에 대한 답변 이메일을 작성해줘.
@@ -264,7 +264,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 11,
     category: '데이터/분석',
-    title: '매출 데이터 트렌드 분석',
+    title: '[중급] 매출 데이터 트렌드 분석',
     situation: '상반기 매출 데이터를 분석하여 하반기 전략을 수립해야 합니다.',
     prompt: `너는 건설/안전 산업 데이터 분석 전문가야.
 다음 월별 매출 데이터를 분석해줘.
@@ -292,7 +292,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 12,
     category: '데이터/분석',
-    title: '엑셀 수식/함수 생성',
+    title: '[초급] 엑셀 수식/함수 생성',
     situation: '복잡한 엑셀 수식이 필요한데 직접 만들기 어렵습니다.',
     prompt: `너는 엑셀 고급 사용자이자 데이터 분석 전문가야.
 다음 요구사항에 맞는 엑셀 수식을 만들어줘.
@@ -322,7 +322,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 13,
     category: '데이터/분석',
-    title: '설문 결과 분석 및 시각화 제안',
+    title: '[중급] 설문 결과 분석 및 시각화 제안',
     situation: '직원 만족도 설문 결과를 분석하고 경영진에 보고해야 합니다.',
     prompt: `너는 조직문화 컨설턴트이자 데이터 분석 전문가야.
 다음 직원 만족도 설문 결과를 분석해줘.
@@ -356,7 +356,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 14,
     category: '기획/전략',
-    title: '신규 사업 아이디어 브레인스토밍',
+    title: '[중급] 신규 사업 아이디어 브레인스토밍',
     situation: 'AI 기술을 접목한 신규 사업 아이디어를 경영진에게 제안해야 합니다.',
     prompt: `너는 도로안전 산업과 AI/ICT 기술 모두에 정통한 전략 컨설턴트야.
 도로안전 기업(다스코)이 추진할 수 있는 AI 신규 사업 아이디어를 10가지 제안해줘.
@@ -384,7 +384,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 15,
     category: '기획/전략',
-    title: 'SWOT 분석',
+    title: '[중급] SWOT 분석',
     situation: '연간 사업 계획 수립을 위해 회사의 SWOT 분석이 필요합니다.',
     prompt: `너는 건설/안전 산업 경영 전략 컨설턴트야.
 다음 정보를 바탕으로 다스코(주)의 SWOT 분석을 수행해줘.
@@ -415,7 +415,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 16,
     category: '기획/전략',
-    title: '마케팅 전략 수립',
+    title: '[중급] 마케팅 전략 수립',
     situation: '신제품 충격흡수형 가드레일의 마케팅 전략이 필요합니다.',
     prompt: `너는 B2G(기업→정부) 마케팅 전략 전문가야.
 다스코(주)의 신제품 '충격흡수형 가드레일 SB-500' 마케팅 전략을 수립해줘.
@@ -447,7 +447,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 17,
     category: '안전/현장',
-    title: '안전 점검 체크리스트 생성',
+    title: '[초급] 안전 점검 체크리스트 생성',
     situation: '가드레일 현장 점검 시 사용할 표준화된 체크리스트가 필요합니다.',
     prompt: `너는 도로안전 시설물 점검 전문가야.
 가드레일 현장 점검 시 사용할 표준 체크리스트를 만들어줘.
@@ -472,7 +472,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 18,
     category: '안전/현장',
-    title: '안전교육 자료 제작',
+    title: '[초급] 안전교육 자료 제작',
     situation: '신규 현장 근로자를 위한 안전교육 자료를 만들어야 합니다.',
     prompt: `너는 건설현장 안전교육 전문 강사야.
 도로 작업 현장 신규 투입 근로자를 위한 안전교육 자료를 만들어줘.
@@ -497,7 +497,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 19,
     category: '안전/현장',
-    title: '사고 보고서 작성',
+    title: '[중급] 사고 보고서 작성',
     situation: '현장에서 경미한 안전사고가 발생하여 보고서를 작성해야 합니다.',
     prompt: `너는 산업안전 관리 전문가야.
 다음 상황을 바탕으로 안전사고 보고서를 작성해줘.
@@ -527,7 +527,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 20,
     category: '회의/협업',
-    title: '회의록 자동 정리',
+    title: '[초급] 회의록 자동 정리',
     situation: '1시간 동안의 프로젝트 회의 내용을 정리해야 합니다.',
     prompt: `너는 비즈니스 회의 전문 비서야.
 다음 회의 메모를 공식 회의록으로 정리해줘.
@@ -557,7 +557,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 21,
     category: '회의/협업',
-    title: '팀 업무 분장표 작성',
+    title: '[초급] 팀 업무 분장표 작성',
     situation: '신규 프로젝트 투입 인력의 업무 분장(R&R)을 정리해야 합니다.',
     prompt: `너는 프로젝트 관리(PM) 전문가야.
 다음 프로젝트 정보를 바탕으로 팀 업무 분장표(R&R)를 만들어줘.
@@ -586,7 +586,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 22,
     category: '교육/발표',
-    title: 'PPT 발표 슬라이드 구성',
+    title: '[중급] PPT 발표 슬라이드 구성',
     situation: '경영진 대상으로 AI 도입 효과를 발표해야 합니다.',
     prompt: `너는 프레젠테이션 전문 컨설턴트야.
 경영진 대상 'AI 도입 성과 및 향후 계획' 발표 슬라이드 구성안을 만들어줘.
@@ -611,7 +611,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 23,
     category: '교육/발표',
-    title: '신입사원 OJT 교육 커리큘럼',
+    title: '[중급] 신입사원 OJT 교육 커리큘럼',
     situation: '신입사원을 위한 2주간 OJT 교육 프로그램을 설계해야 합니다.',
     prompt: `너는 건설/안전 기업의 인사교육 전문가야.
 도로안전 기업(다스코) 신입사원 OJT 교육 커리큘럼을 설계해줘.
@@ -644,7 +644,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 24,
     category: '교육/발표',
-    title: '발표 스크립트 작성',
+    title: '[초급] 발표 스크립트 작성',
     situation: '전시회에서 신제품을 소개하는 5분 발표 스크립트가 필요합니다.',
     prompt: `너는 도로안전 장비 전시회 전문 발표자야.
 '2024 국제 도로안전 전시회'에서 신제품을 소개하는 5분 발표 스크립트를 작성해줘.
@@ -671,7 +671,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 25,
     category: '법무/계약',
-    title: '계약서 검토 요청',
+    title: '[중급] 계약서 검토 요청',
     situation: '발주처로부터 받은 공사 계약서 초안을 검토해야 합니다.',
     prompt: `너는 건설/안전 분야 법무 전문가야.
 다음 공사 계약서 주요 조항을 검토하고 의견을 제시해줘.
@@ -701,7 +701,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 26,
     category: '법무/계약',
-    title: '내부 규정 초안 작성',
+    title: '[중급] 내부 규정 초안 작성',
     situation: 'AI 사용에 대한 사내 가이드라인을 만들어야 합니다.',
     prompt: `너는 기업 IT 거버넌스 및 정보보안 전문가야.
 도로안전 기업(다스코, 직원 120명)의 'AI 서비스 사용 가이드라인' 초안을 작성해줘.
@@ -729,7 +729,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 27,
     category: '기타 업무',
-    title: '채용 공고 작성',
+    title: '[초급] 채용 공고 작성',
     situation: '시공관리 경력직을 채용하기 위한 공고를 작성해야 합니다.',
     prompt: `너는 건설/안전 분야 HR 전문가야.
 다스코(주) 시공관리 경력직 채용 공고를 작성해줘.
@@ -763,7 +763,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 28,
     category: '기타 업무',
-    title: '고객사 방문 준비 브리핑',
+    title: '[중급] 고객사 방문 준비 브리핑',
     situation: '내일 중요 고객사를 방문하는데 사전 브리핑 자료가 필요합니다.',
     prompt: `너는 B2G 영업 전략 전문가야.
 내일 방문할 고객사에 대한 사전 브리핑 자료를 만들어줘.
@@ -792,7 +792,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 29,
     category: '기타 업무',
-    title: '업무 자동화 매크로 요청',
+    title: '[중급] 업무 자동화 매크로 요청',
     situation: '반복적인 파일 정리 업무를 자동화하고 싶습니다.',
     prompt: `너는 업무 자동화 전문가야.
 다음 반복 업무를 자동화할 수 있는 방법을 제안해줘.
@@ -823,7 +823,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 30,
     category: '기타 업무',
-    title: '벤치마킹 보고서',
+    title: '[중급] 벤치마킹 보고서',
     situation: '경쟁사의 최신 동향을 파악하여 보고해야 합니다.',
     prompt: `너는 도로안전 산업 시장조사 전문가야.
 국내 도로안전 시설물 업계 주요 기업 벤치마킹 보고서를 작성해줘.
@@ -850,7 +850,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 31,
     category: '데이터/분석',
-    title: '입찰 가격 분석',
+    title: '[중급] 입찰 가격 분석',
     situation: '공공 입찰에 참여하기 위해 적정 투찰 가격을 분석해야 합니다.',
     prompt: `너는 공공 입찰 전략 전문가야.
 다음 정보를 바탕으로 최적 투찰 가격을 분석해줘.
@@ -879,7 +879,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 32,
     category: '회의/협업',
-    title: '워크숍 기획안',
+    title: '[중급] 워크숍 기획안',
     situation: '팀 빌딩 겸 하반기 전략 수립 워크숍을 기획해야 합니다.',
     prompt: `너는 기업 워크숍/퍼실리테이션 전문가야.
 다스코(주) 시설관리팀 하반기 전략 워크숍을 기획해줘.
@@ -913,7 +913,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 33,
     category: '기획/전략',
-    title: 'ESG 대응 전략 수립',
+    title: '[중급] ESG 대응 전략 수립',
     situation: '고객사(도로공사)가 ESG 평가 기준을 강화하여 대응이 필요합니다.',
     prompt: `너는 건설/안전 산업 ESG 컨설턴트야.
 도로안전 기업(다스코)의 ESG 대응 전략을 수립해줘.
@@ -942,7 +942,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 34,
     category: '이메일/공문',
-    title: '공문 작성 (관공서 발송)',
+    title: '[초급] 공문 작성 (관공서 발송)',
     situation: '지자체에 도로안전 시설물 점검 결과를 공문으로 보고해야 합니다.',
     prompt: `너는 건설/안전 기업의 공문 작성 전문가야.
 ○○시 도로관리과에 발송할 도로안전 시설물 정기점검 결과 보고 공문을 작성해줘.
@@ -971,7 +971,7 @@ const PROMPT_CASES: PromptCase[] = [
   {
     id: 35,
     category: '안전/현장',
-    title: '위험성 평가 보고서',
+    title: '[중급] 위험성 평가 보고서',
     situation: '신규 현장 착공 전 위험성 평가를 실시하고 보고서를 작성해야 합니다.',
     prompt: `너는 건설현장 위험성 평가 전문가야.
 도로 가드레일 교체 현장의 위험성 평가 보고서를 작성해줘.
