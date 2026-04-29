@@ -179,9 +179,10 @@ const Home = (): ReactElement => {
                 <div className="hero-card-eyebrow">2026 Spring · Cohort 03</div>
                 <div className="hero-card-title">다음 기수가 곧 시작됩니다</div>
                 <ul className="hero-card-list">
-                  <li>기초과정 — 5월 12일 (월) 09:00</li>
-                  <li>중급과정 — 5월 26일 (월) 09:00</li>
-                  <li>장소 — 본사 5F 교육실 / 온라인 병행</li>
+                  <li>기초과정 1차 — 2026.04.29. 10:00 ~ 15:00 (4H)</li>
+                  <li>기초과정 2차 — 2026.05.17. 09:00 ~ (4H)</li>
+                  <li>중급과정 1차 — 2026.05.17. 14:00 ~ (4H)</li>
+                  <li>장소 — 서울지점</li>
                 </ul>
               </div>
             </div>
