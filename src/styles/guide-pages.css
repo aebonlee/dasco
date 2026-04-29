@@ -163,33 +163,36 @@
     margin-top: 2px;
 }
 .guide-sidebar-cta.workshop {
-    background: var(--navy-50);
-    border-color: var(--line);
+    background: rgba(61,111,224,0.08);
+    border-color: rgba(61,111,224,0.25);
     color: var(--text-primary);
 }
 .guide-sidebar-cta.workshop i {
-    color: var(--navy-700);
+    color: var(--primary-blue);
 }
 .guide-sidebar-cta.workshop span {
     color: var(--text-light);
 }
 .guide-sidebar-cta.workshop:hover {
-    background: var(--line);
-    border-color: var(--gold);
+    background: rgba(61,111,224,0.15);
+    border-color: var(--primary-blue);
 }
 .guide-sidebar-cta.practice {
-    background: var(--navy-50);
-    border-color: var(--line);
-    color: var(--text-primary);
+    background: var(--navy-800);
+    border-color: var(--navy-800);
+    color: #fff;
 }
 .guide-sidebar-cta.practice i {
-    color: var(--navy-800);
+    color: var(--gold);
+}
+.guide-sidebar-cta.practice strong {
+    color: #fff;
 }
 .guide-sidebar-cta.practice span {
-    color: var(--text-light);
+    color: rgba(255,255,255,0.7);
 }
 .guide-sidebar-cta.practice:hover {
-    background: var(--line);
+    background: var(--navy-900);
     border-color: var(--gold);
 }
 
