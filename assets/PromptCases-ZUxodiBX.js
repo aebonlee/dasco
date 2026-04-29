@@ -1,4 +1,4 @@
-import{r as n,j as t}from"./index-BQqmVCHK.js";import{S as y}from"./SEOHead-UqWbdJqi.js";const g=["전체","보고서/문서","이메일/공문","데이터/분석","기획/전략","안전/현장","회의/협업","교육/발표","법무/계약","기타 업무"],a=[{id:1,category:"보고서/문서",title:"주간 업무 보고서 작성",situation:"매주 금요일 팀장에게 제출할 주간 업무 보고서를 작성해야 합니다.",prompt:`너는 도로안전 전문 기업의 시설관리팀 담당자야.
+import{r as n,j as t}from"./index-LV7uWnYl.js";import{S as y}from"./SEOHead-CZ1Gp9VX.js";const g=["전체","보고서/문서","이메일/공문","데이터/분석","기획/전략","안전/현장","회의/협업","교육/발표","법무/계약","기타 업무"],a=[{id:1,category:"보고서/문서",title:"주간 업무 보고서 작성",situation:"매주 금요일 팀장에게 제출할 주간 업무 보고서를 작성해야 합니다.",prompt:`너는 도로안전 전문 기업의 시설관리팀 담당자야.
 다음 메모를 바탕으로 주간 업무 보고서를 작성해줘.
 
 [이번 주 실적]
