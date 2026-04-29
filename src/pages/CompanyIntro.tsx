@@ -2,43 +2,25 @@ import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import type { ReactElement } from 'react';
 
-const STATS = [
-  { num: '86', label: '운영 사이트', suffix: '개' },
-  { num: '120', label: 'GitHub 리포지토리', suffix: '+' },
-  { num: '49', label: 'TypeScript 마이그레이션', suffix: '개' },
-  { num: '24', label: '결제 시스템 연동', suffix: '개' },
-];
-
-const CATEGORIES = [
-  { name: '그룹 허브', count: 9, desc: '교육·코딩·CS·취업·논문·AI·기초·시험·비즈니스 허브', color: '#1B2A4A' },
-  { name: '인공지능/AI', count: 16, desc: 'ChatGPT, Gemini, Claude, Copilot, Fine-tuning 등 AI 교육', color: '#D4760A' },
-  { name: '경영 전공', count: 8, desc: 'HRM, 마케팅, 회계, 기획, 디지털비즈, UX디자인 등', color: '#00855A' },
-  { name: '교양/인문', count: 9, desc: '통계, 일본어, 영어, 프레젠테이션, 안전, ESG, AI리터러시', color: '#5B2C8B' },
-  { name: '코딩/프로그래밍', count: 7, desc: 'HTML, React, C, Java, Python, 코딩 기초', color: '#C8102E' },
-  { name: '자격증', count: 5, desc: '정보처리기사, 리눅스, SQLD, AWS, 취업 경로', color: '#2563EB' },
-  { name: '외부 기업', count: 6, desc: '한국IT, PBI, PBI로봇, 올댓, KNC, KOMIPO 교육', color: '#1B2A4A' },
-  { name: '기타', count: 26, desc: '회사 사이트, 논문연구, 교수/강사, 대학 교과목 등', color: '#6B7280' },
-];
-
 const TECH_STACK = [
   { name: 'React 19', desc: '최신 React로 모든 사이트 구축', icon: 'fa-brands fa-react' },
   { name: 'Vite 7', desc: '초고속 빌드 도구', icon: 'fa-solid fa-bolt' },
-  { name: 'TypeScript', desc: '타입 안전성 확보 (49개 사이트)', icon: 'fa-solid fa-code' },
-  { name: 'Supabase', desc: '백엔드 인프라 (38+ 사이트)', icon: 'fa-solid fa-database' },
+  { name: 'TypeScript', desc: '타입 안전성 확보', icon: 'fa-solid fa-code' },
+  { name: 'Supabase', desc: '클라우드 백엔드 인프라', icon: 'fa-solid fa-database' },
   { name: 'GitHub Pages', desc: '전체 사이트 배포 플랫폼', icon: 'fa-brands fa-github' },
-  { name: 'PortOne', desc: '결제 시스템 (24개 사이트)', icon: 'fa-solid fa-credit-card' },
+  { name: 'Resend', desc: '이메일 알림 시스템', icon: 'fa-solid fa-envelope' },
 ];
 
 const CompanyIntro = (): ReactElement => {
   return (
     <>
-      <SEOHead title="드림아이티비즈 소개 | DASCO AI Academy" description="86개 교육 사이트를 운영하는 에듀테크 전문 기업 드림아이티비즈" />
+      <SEOHead title="드림아이티비즈(DreamIT Biz) 소개 | DASCO AI Academy" description="다양한 교육 플랫폼을 운영하는 에듀테크 전문 기업 드림아이티비즈" />
 
       <section className="page-header-ed">
         <div className="container">
           <div className="eyebrow">DreamIT Biz</div>
-          <h2>드림아이티비즈</h2>
-          <p>86개 교육 사이트를 운영하는 에듀테크 전문 기업</p>
+          <h2>드림아이티비즈(DreamIT Biz)</h2>
+          <p>다양한 교육 플랫폼을 운영하는 에듀테크 전문 기업</p>
         </div>
       </section>
 
@@ -62,8 +44,9 @@ const CompanyIntro = (): ReactElement => {
                 <p style={{ fontSize: '14px', color: 'var(--text-secondary)', lineHeight: 1.8 }}>
                   드림아이티비즈(DreamIT Biz)는 대학교, 기업, 공공기관을 대상으로
                   맞춤형 교육 플랫폼을 설계·개발·운영하는 에듀테크 전문 기업입니다.
-                  현재 86개의 교육 사이트를 *.dreamitbiz.com 도메인 하에 운영하고 있으며,
-                  React + Vite + TypeScript 기반의 최신 웹 기술과 Supabase 클라우드 인프라를 활용합니다.
+                  AI 교육, 경영학, 코딩, 자격증, 인문교양 등 다양한 분야의
+                  교육 사이트를 *.dreamitbiz.com 도메인 하에 운영하고 있으며,
+                  각 교육 대상에 맞춘 최적의 학습 경험을 제공합니다.
                 </p>
               </div>
               <div style={{
@@ -90,61 +73,47 @@ const CompanyIntro = (): ReactElement => {
               </div>
             </div>
 
-            {/* 숫자 통계 */}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '16px',
-              marginBottom: '48px',
-            }}>
-              {STATS.map((s) => (
-                <div key={s.label} style={{
-                  textAlign: 'center',
-                  padding: '24px 16px',
-                  background: 'var(--navy-50)',
-                  borderRadius: 'var(--radius)',
-                }}>
-                  <div style={{ fontSize: '32px', fontWeight: 800, color: 'var(--navy-800)' }}>
-                    {s.num}<span style={{ fontSize: '16px', color: 'var(--gold)' }}>{s.suffix}</span>
-                  </div>
-                  <div style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '4px', fontWeight: 500 }}>{s.label}</div>
-                </div>
-              ))}
-            </div>
-
-            {/* 사이트 카테고리 */}
+            {/* 운영 플랫폼 소개 */}
             <h3 style={{ fontSize: '20px', color: 'var(--navy-800)', fontWeight: 700, marginBottom: '20px' }}>
-              86개 사이트 카테고리
+              운영 플랫폼
             </h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '12px', marginBottom: '48px' }}>
-              {CATEGORIES.map((cat) => (
-                <div key={cat.name} style={{
+            <div style={{
+              background: 'var(--navy-50)',
+              borderLeft: '4px solid var(--gold)',
+              padding: '24px 28px',
+              borderRadius: '0 12px 12px 0',
+              marginBottom: '32px',
+              fontSize: '14px',
+              color: 'var(--text-primary)',
+              lineHeight: 1.8,
+            }}>
+              드림아이티비즈는 <strong>인공지능(AI), 경영학, 프로그래밍, 자격증, 인문교양, 대학 교과목</strong> 등
+              다양한 분야의 교육 플랫폼을 운영하고 있습니다.
+              각 플랫폼은 학습 대상과 목적에 맞게 독립적으로 설계되어 있으며,
+              대학교 정규 교과목, 기업 사내 교육, 자격증 학습, 개인 역량 개발 등
+              폭넓은 교육 수요에 대응합니다.
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '14px', marginBottom: '48px' }}>
+              {[
+                { icon: 'fa-robot', title: 'AI / 인공지능', desc: 'ChatGPT, Gemini, Claude, Copilot, 프롬프트 엔지니어링, AI 리터러시 등' },
+                { icon: 'fa-briefcase', title: '경영 전공', desc: 'HRM, 마케팅, 회계, 기획, 디지털비즈니스, UX디자인 등' },
+                { icon: 'fa-code', title: '코딩 / 프로그래밍', desc: 'HTML, React, C, Java, Python, 알고리즘, 데이터베이스 등' },
+                { icon: 'fa-graduation-cap', title: '대학 교과목', desc: 'AI·SW개론(한신대), 컴퓨팅 사고(한국기술교육대) 등 정규 교과목' },
+                { icon: 'fa-award', title: '자격증 / 취업', desc: '정보처리기사, 리눅스, SQLD, AWS, 취업 지원 등' },
+                { icon: 'fa-book-open', title: '교양 / 인문', desc: '통계, 외국어, 프레젠테이션, 안전, ESG 등 교양 교육' },
+              ].map((item) => (
+                <div key={item.title} style={{
                   display: 'flex',
-                  alignItems: 'flex-start',
                   gap: '14px',
-                  padding: '16px 20px',
+                  padding: '20px',
                   background: 'var(--bg-white)',
                   border: '1px solid var(--line)',
                   borderRadius: 'var(--radius)',
                 }}>
-                  <div style={{
-                    width: '36px',
-                    height: '36px',
-                    borderRadius: '8px',
-                    background: cat.color,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#fff',
-                    fontSize: '13px',
-                    fontWeight: 800,
-                    flexShrink: 0,
-                  }}>
-                    {cat.count}
-                  </div>
+                  <i className={`fa-solid ${item.icon}`} style={{ fontSize: '20px', color: 'var(--gold)', marginTop: '2px', flexShrink: 0 }} />
                   <div>
-                    <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--navy-800)' }}>{cat.name}</div>
-                    <div style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '2px', lineHeight: 1.5 }}>{cat.desc}</div>
+                    <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--navy-800)' }}>{item.title}</div>
+                    <div style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '4px', lineHeight: 1.5 }}>{item.desc}</div>
                   </div>
                 </div>
               ))}

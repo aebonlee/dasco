@@ -85,7 +85,6 @@ const InstructorIntro = (): ReactElement => {
                 <div style={{ display: 'flex', gap: '8px' }}>
                   {[
                     { icon: 'fa-solid fa-envelope', href: 'mailto:aebon@dreamitbiz.com' },
-                    { icon: 'fa-brands fa-github', href: 'https://github.com/aebonlee' },
                     { icon: 'fa-solid fa-globe', href: 'https://www.dreamitbiz.com' },
                   ].map((s) => (
                     <a key={s.icon} href={s.href} target="_blank" rel="noopener noreferrer" style={{
@@ -131,8 +130,7 @@ const InstructorIntro = (): ReactElement => {
                     ['직위', '드림아이티비즈 대표'],
                     ['학위', '박사 (Ph.D)'],
                     ['전공', 'AI / IT / 경영학'],
-                    ['GitHub', '120+ Repositories'],
-                    ['교육 사이트', '86개 운영'],
+                    ['교육 사이트', '다수 운영'],
                     ['교육 대상', '대학·기업·공공기관'],
                   ].map(([key, val]) => (
                     <div key={key} style={{
