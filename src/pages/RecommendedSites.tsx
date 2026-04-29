@@ -45,6 +45,13 @@ const DREAMIT_SITES: SiteLink[] = [
     desc: 'Genspark AI 검색 엔진의 Sparkpage, 멀티소스 분석, 실시간 정보 수집 활용법을 학습합니다.',
     tag: 'Genspark',
   },
+  {
+    name: '프레젠테이션 스킬',
+    nameEn: 'Presentation Skills',
+    url: 'https://presentation.dreamitbiz.com',
+    desc: '효과적인 프레젠테이션 기획, 슬라이드 디자인, 발표 기법 등 비즈니스 프레젠테이션 역량을 강화하는 교육 과정입니다.',
+    tag: '프레젠테이션',
+  },
 ];
 
 const AI_SERVICES: SiteLink[] = [
@@ -163,7 +170,7 @@ const RecommendedSites = (): ReactElement => {
           <div className="section-head">
             <div className="section-num">&mdash; 01</div>
             <h2 className="section-title-ed">DreamIT Biz <span className="accent">교육 사이트</span></h2>
-            <div className="section-meta">5 sites</div>
+            <div className="section-meta">6 sites</div>
           </div>
           <div className="rec-grid">
             {DREAMIT_SITES.map((s, i) => <SiteCard key={s.url} site={s} index={i} />)}
