@@ -30,7 +30,7 @@
 
 /* ── Page Header Editorial (Sub-pages) ── */
 .page-header-ed {
-  padding: calc(var(--nav-height) + 48px) 0 40px;
+  padding: calc(var(--nav-height) + 20px) 0 28px;
   background: var(--navy-50);
   border-bottom: 2px solid var(--navy-800);
   position: relative;
