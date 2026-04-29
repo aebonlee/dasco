@@ -89,13 +89,15 @@ const site: SiteConfig = {
       ]
     },
     { path: '/practice', labelKey: 'site.nav.practice', activePath: '/practice' },
+    { path: '/recommended', labelKey: 'site.nav.recommended', activePath: '/recommended' },
   ],
 
   footerLinks: [
     { path: '/', labelKey: 'nav.home' },
     { path: '/curriculum', labelKey: 'site.nav.curriculum' },
     { path: '/prompt-eval', labelKey: 'site.nav.promptLearning' },
-    { path: '/practice', labelKey: 'site.nav.practice' }
+    { path: '/practice', labelKey: 'site.nav.practice' },
+    { path: '/recommended', labelKey: 'site.nav.recommended' }
   ],
 
   familySites: [

@@ -183,7 +183,8 @@ export const translations: Record<string, Record<string, unknown>> = {
         promptHub: '학습 자료',
         promptWorkshop: '작성 평가',
         promptTest: '종합 테스트',
-        practice: 'AI 실습'
+        practice: 'AI 실습',
+        recommended: '추천사이트'
       },
       home: {
         title: 'DASCO AI Academy',
@@ -377,7 +378,8 @@ export const translations: Record<string, Record<string, unknown>> = {
         promptHub: 'Study Materials',
         promptWorkshop: 'Writing Eval',
         promptTest: 'Practice Test',
-        practice: 'AI Practice'
+        practice: 'AI Practice',
+        recommended: 'Recommended'
       },
       home: {
         title: 'DASCO AI Academy',

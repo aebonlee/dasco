@@ -32,6 +32,7 @@ const PromptEvalHub = lazy(() => import('../pages/prompt-eval/PromptEvalHub'));
 const PromptWorkshop = lazy(() => import('../pages/prompt-eval/PromptWorkshop'));
 const PromptPractice = lazy(() => import('../pages/prompt-eval/PromptPractice'));
 const Practice = lazy(() => import('../pages/Practice'));
+const RecommendedSites = lazy(() => import('../pages/RecommendedSites'));
 
 const Loading = (): ReactElement => (
   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}>
@@ -86,6 +87,9 @@ const PublicLayout = (): ReactElement => {
 
             {/* AI 실습 (ChatGPT) */}
             <Route path="/practice" element={<Practice />} />
+
+            {/* 추천사이트 */}
+            <Route path="/recommended" element={<RecommendedSites />} />
 
             {/* 404 */}
             <Route path="*" element={<NotFound />} />
