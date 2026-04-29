@@ -100,7 +100,7 @@ const TOOLS = [
   { name: 'ChatGPT', cat: 'LLM · OpenAI', desc: '대화형 AI의 표준. 보고서 · 요약 · 코드 작성에 활용.', mark: 'C' },
   { name: 'Claude', cat: 'LLM · Anthropic', desc: '긴 문서 분석 및 정밀한 추론에 강점을 가진 모델.', mark: 'A' },
   { name: 'Gemini', cat: 'LLM · Google', desc: 'Google 워크스페이스와의 연계 자동화에 최적.', mark: 'G' },
-  { name: 'Midjourney', cat: 'IMAGE · Generative', desc: '시안 · 컨셉 이미지 생성. 마케팅 · 디자인 협업.', mark: 'M' },
+  { name: 'Genspark', cat: 'SEARCH · AI', desc: 'AI 기반 검색 엔진. Sparkpage로 멀티소스 분석 제공.', mark: 'G' },
 ];
 
 const PILLARS = [
@@ -258,12 +258,48 @@ const Home = (): ReactElement => {
       </section>
 
       {/* ── Curriculum Timeline ── */}
-      <section className="section-ed" id="curriculum-detail">
+      <section className="section-ed" id="curriculum-detail" style={{ paddingTop: '40px' }}>
         <div className="container">
           <div className="section-head">
             <div className="section-num">&mdash; 02 / Schedule</div>
             <h2 className="section-title-ed"><span className="accent">4시간</span> &times; 4교시</h2>
             <div className="section-meta">{tab === 'basic' ? 'Basic Track' : 'Intermediate Track'}</div>
+            <div style={{ display: 'flex', gap: '8px', marginTop: '16px' }}>
+              <button
+                onClick={() => setTab('basic')}
+                style={{
+                  padding: '8px 24px',
+                  borderRadius: '20px',
+                  border: tab === 'basic' ? '2px solid var(--navy-800)' : '1px solid var(--line)',
+                  background: tab === 'basic' ? 'var(--navy-800)' : 'var(--bg-white)',
+                  color: tab === 'basic' ? '#fff' : 'var(--text-secondary)',
+                  fontSize: '13px',
+                  fontWeight: tab === 'basic' ? 700 : 500,
+                  cursor: 'pointer',
+                  transition: 'all 0.2s',
+                  fontFamily: 'inherit',
+                }}
+              >
+                기초과정
+              </button>
+              <button
+                onClick={() => setTab('inter')}
+                style={{
+                  padding: '8px 24px',
+                  borderRadius: '20px',
+                  border: tab === 'inter' ? '2px solid var(--navy-800)' : '1px solid var(--line)',
+                  background: tab === 'inter' ? 'var(--navy-800)' : 'var(--bg-white)',
+                  color: tab === 'inter' ? '#fff' : 'var(--text-secondary)',
+                  fontSize: '13px',
+                  fontWeight: tab === 'inter' ? 700 : 500,
+                  cursor: 'pointer',
+                  transition: 'all 0.2s',
+                  fontFamily: 'inherit',
+                }}
+              >
+                중급과정
+              </button>
+            </div>
           </div>
 
           <div className="curriculum-ed">

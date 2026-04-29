@@ -627,8 +627,8 @@
 /* ── CTA ── */
 .cta-ed {
   padding: var(--s-11) 0;
-  background: var(--navy-800);
-  color: #fff;
+  background: linear-gradient(180deg, var(--navy-50) 0%, rgba(27,42,74,0.08) 100%);
+  color: var(--navy-800);
   position: relative;
   overflow: hidden;
 }
@@ -662,13 +662,13 @@
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.15;
-  color: #fff;
+  color: var(--navy-800);
 }
 .cta-title-ed .accent { color: var(--gold); }
 .cta-side { display: flex; flex-direction: column; gap: var(--s-5); }
 .cta-side p {
   font-size: 15px;
-  color: rgba(255,255,255,0.88);
+  color: var(--text-secondary);
   line-height: 1.7;
 }
 

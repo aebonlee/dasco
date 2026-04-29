@@ -59,7 +59,17 @@ const site: SiteConfig = {
   ],
 
   menuItems: [
-    { path: '/', labelKey: 'nav.home' },
+    {
+      labelKey: 'site.nav.about',
+      path: '/',
+      activePath: '/about',
+      dropdown: [
+        { path: '/', labelKey: 'nav.home' },
+        { path: '/about', labelKey: 'site.nav.aboutIntent' },
+        { path: '/about/company', labelKey: 'site.nav.aboutCompany' },
+        { path: '/about/instructor', labelKey: 'site.nav.aboutInstructor' },
+      ]
+    },
     {
       labelKey: 'site.nav.curriculum',
       path: '/curriculum',

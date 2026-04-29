@@ -169,7 +169,7 @@ const RecommendedSites = (): ReactElement => {
           {/* DreamIT Biz 교육 사이트 */}
           <div className="section-head">
             <div className="section-num">&mdash; 01</div>
-            <h2 className="section-title-ed">DreamIT Biz <span className="accent">교육 사이트</span></h2>
+            <h2 className="section-title-ed" style={{ fontSize: 'clamp(22px, 2.5vw, 34px)' }}>DreamIT Biz <span className="accent">교육 사이트</span></h2>
             <div className="section-meta">6 sites</div>
           </div>
           <div className="rec-grid">
@@ -179,7 +179,7 @@ const RecommendedSites = (): ReactElement => {
           {/* AI 서비스 */}
           <div className="section-head" style={{ marginTop: 'var(--s-11)' }}>
             <div className="section-num">&mdash; 02</div>
-            <h2 className="section-title-ed">AI <span className="accent">서비스</span></h2>
+            <h2 className="section-title-ed" style={{ fontSize: 'clamp(22px, 2.5vw, 34px)' }}>AI <span className="accent">서비스</span></h2>
             <div className="section-meta">6 services</div>
           </div>
           <div className="rec-grid">
@@ -189,7 +189,7 @@ const RecommendedSites = (): ReactElement => {
           {/* AI 업무 도구 */}
           <div className="section-head" style={{ marginTop: 'var(--s-11)' }}>
             <div className="section-num">&mdash; 03</div>
-            <h2 className="section-title-ed">AI <span className="accent">업무 도구</span></h2>
+            <h2 className="section-title-ed" style={{ fontSize: 'clamp(22px, 2.5vw, 34px)' }}>AI <span className="accent">업무 도구</span></h2>
             <div className="section-meta">4 tools</div>
           </div>
           <div className="rec-grid">

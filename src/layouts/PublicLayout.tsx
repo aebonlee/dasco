@@ -34,6 +34,9 @@ const PromptPractice = lazy(() => import('../pages/prompt-eval/PromptPractice'))
 const Practice = lazy(() => import('../pages/Practice'));
 const PromptCases = lazy(() => import('../pages/PromptCases'));
 const RecommendedSites = lazy(() => import('../pages/RecommendedSites'));
+const AboutPage = lazy(() => import('../pages/About'));
+const CompanyIntro = lazy(() => import('../pages/CompanyIntro'));
+const InstructorIntro = lazy(() => import('../pages/InstructorIntro'));
 
 const Loading = (): ReactElement => (
   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}>
@@ -91,6 +94,11 @@ const PublicLayout = (): ReactElement => {
 
             {/* 업무용 프롬프트 사례 */}
             <Route path="/prompt-cases" element={<PromptCases />} />
+
+            {/* About */}
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/about/company" element={<CompanyIntro />} />
+            <Route path="/about/instructor" element={<InstructorIntro />} />
 
             {/* 추천사이트 */}
             <Route path="/recommended" element={<RecommendedSites />} />

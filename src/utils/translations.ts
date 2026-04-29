@@ -185,7 +185,11 @@ export const translations: Record<string, Record<string, unknown>> = {
         promptTest: '종합 테스트',
         practice: 'AI 실습',
         promptCases: '프롬프트 사례',
-        recommended: '추천사이트'
+        recommended: '추천사이트',
+        about: 'About',
+        aboutIntent: '제작의도',
+        aboutCompany: '드림아이티비즈',
+        aboutInstructor: '강사 소개'
       },
       home: {
         title: 'DASCO AI Academy',
@@ -381,7 +385,11 @@ export const translations: Record<string, Record<string, unknown>> = {
         promptTest: 'Practice Test',
         practice: 'AI Practice',
         promptCases: 'Prompt Cases',
-        recommended: 'Recommended'
+        recommended: 'Recommended',
+        about: 'About',
+        aboutIntent: 'About This Site',
+        aboutCompany: 'DreamIT Biz',
+        aboutInstructor: 'Instructor'
       },
       home: {
         title: 'DASCO AI Academy',
