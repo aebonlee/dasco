@@ -357,7 +357,7 @@ const Home = (): ReactElement => {
       </section>
 
       {/* ── Tools ── */}
-      <section className="section-ed" id="tools">
+      <section className="section-ed" id="tools" style={{ paddingBottom: '40px' }}>
         <div className="container">
           <div className="section-head">
             <div className="section-num">&mdash; 03 / Toolkit</div>
@@ -380,7 +380,7 @@ const Home = (): ReactElement => {
       </section>
 
       {/* ── Pillars ── */}
-      <section className="section-ed" id="approach">
+      <section className="section-ed" id="approach" style={{ paddingTop: '40px' }}>
         <div className="container">
           <div className="section-head">
             <div className="section-num">&mdash; 04 / Approach</div>
