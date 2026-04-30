@@ -1129,7 +1129,7 @@
 /* ── Practice Layout (sidebar + main) ── */
 .practice-layout {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 320px 1fr;
   gap: var(--s-7);
   align-items: start;
 }

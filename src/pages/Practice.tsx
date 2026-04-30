@@ -319,29 +319,106 @@ const Practice = (): ReactElement => {
             {/* ── 오른쪽 메인 영역 ── */}
             <main className="practice-main">
               {!scenario ? (
-                /* 시나리오 미선택 */
-                <div className="chat-container">
-                  <div className="chat-empty" style={{ minHeight: '500px' }}>
-                    <div className="chat-empty-icon">
-                      <i className="fa-solid fa-pen-to-square" style={{ fontSize: '24px' }} />
+                /* 시나리오 미선택 — 풍성한 안내 화면 */
+                <div>
+                  {/* 상단 인트로 배너 */}
+                  <div style={{
+                    padding: '36px 32px', marginBottom: '24px',
+                    background: 'var(--navy-800)', borderRadius: '16px',
+                    color: '#fff',
+                  }}>
+                    <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--gold)', letterSpacing: '0.12em', marginBottom: '12px' }}>
+                      PROMPT WRITING PRACTICE
                     </div>
-                    <p>왼쪽에서 실습 시나리오를 선택하세요</p>
-                    <span>업무 상황에 맞는 프롬프트를 작성하고 SCORE 기준으로 채점합니다.</span>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', marginTop: '32px', maxWidth: '560px' }}>
-                      {SCENARIOS.slice(0, 6).map(s => (
-                        <button
-                          key={s.id}
-                          onClick={() => handleSelectScenario(s.id)}
-                          style={{
-                            padding: '16px 12px', background: 'var(--bg-white)',
-                            border: '1px solid var(--line)', borderRadius: '8px',
-                            cursor: 'pointer', fontFamily: 'inherit', textAlign: 'center',
-                            transition: 'all 0.2s',
-                          }}
-                        >
-                          <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--gold)', marginBottom: '4px' }}>{s.category}</div>
-                          <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--navy-800)', lineHeight: 1.3 }}>{s.title}</div>
-                        </button>
+                    <h3 style={{ fontSize: '22px', fontWeight: 800, margin: '0 0 12px', lineHeight: 1.4 }}>
+                      업무 시나리오별<br />
+                      <span style={{ color: 'var(--gold)' }}>프롬프트 작성 실습</span>
+                    </h3>
+                    <p style={{ fontSize: '14px', opacity: 0.8, lineHeight: 1.7, margin: 0 }}>
+                      실제 업무 상황에 맞는 프롬프트를 직접 작성하고, SCORE 5가지 기준으로 자동 채점합니다.
+                      왼쪽 사이드바에서 시나리오를 선택하거나, 아래 카드를 클릭해 시작하세요.
+                    </p>
+                  </div>
+
+                  {/* 시나리오 선택 카드 그리드 */}
+                  <div style={{ marginBottom: '24px' }}>
+                    <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--navy-800)', marginBottom: '14px' }}>
+                      <i className="fa-solid fa-list-check" style={{ color: 'var(--gold)', marginRight: '8px' }} />
+                      실습 시나리오 선택
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '14px' }}>
+                      {SCENARIOS.map(s => {
+                        const icons: Record<string, string> = {
+                          '이메일': 'fa-envelope', '보고서': 'fa-file-lines', '데이터 분석': 'fa-chart-bar',
+                          '기획': 'fa-lightbulb', '안전': 'fa-shield-halved', '회의': 'fa-users',
+                        };
+                        const lastResult = history.filter(h => h.scenarioId === s.id).slice(-1)[0];
+                        return (
+                          <button
+                            key={s.id}
+                            onClick={() => handleSelectScenario(s.id)}
+                            style={{
+                              padding: '20px', background: 'var(--bg-white)',
+                              border: '1px solid var(--line)', borderRadius: '12px',
+                              cursor: 'pointer', fontFamily: 'inherit', textAlign: 'left',
+                              transition: 'all 0.2s', display: 'flex', gap: '14px', alignItems: 'flex-start',
+                            }}
+                          >
+                            <div style={{
+                              width: '40px', height: '40px', borderRadius: '10px', flexShrink: 0,
+                              background: 'var(--navy-50)', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            }}>
+                              <i className={`fa-solid ${icons[s.category] || 'fa-file'}`} style={{ fontSize: '16px', color: 'var(--navy-800)' }} />
+                            </div>
+                            <div style={{ flex: 1, minWidth: 0 }}>
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                                <span style={{ fontSize: '11px', fontWeight: 700, color: 'var(--gold)' }}>{s.category}</span>
+                                {lastResult && (
+                                  <span style={{
+                                    fontSize: '10px', fontWeight: 800, padding: '1px 6px', borderRadius: '3px',
+                                    background: 'var(--navy-800)', color: 'var(--gold)',
+                                  }}>{lastResult.grade} · {lastResult.score}점</span>
+                                )}
+                              </div>
+                              <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--navy-800)', marginBottom: '4px' }}>{s.title}</div>
+                              <div style={{
+                                fontSize: '12px', color: 'var(--text-secondary)', lineHeight: 1.5,
+                                overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' as const,
+                              }}>{s.situation}</div>
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* SCORE 채점 기준 안내 */}
+                  <div style={{
+                    padding: '24px 28px', background: 'var(--navy-50)',
+                    borderRadius: '12px', borderLeft: '4px solid var(--gold)',
+                  }}>
+                    <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--navy-800)', marginBottom: '16px' }}>
+                      <i className="fa-solid fa-star" style={{ color: 'var(--gold)', marginRight: '8px' }} />
+                      SCORE 채점 기준 (각 20점, 총 100점)
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '10px' }}>
+                      {[
+                        { key: 'S', label: '상황/맥락', desc: '배경과 맥락을 제시' },
+                        { key: 'C', label: '구체적 정보', desc: '숫자·날짜·조건 포함' },
+                        { key: 'O', label: '목표/지시', desc: '명확한 요청 지시문' },
+                        { key: 'R', label: '출력 형식', desc: '표·목록·분량 지정' },
+                        { key: 'E', label: '역할/제약', desc: '역할 부여·제약조건' },
+                      ].map(item => (
+                        <div key={item.key} style={{ textAlign: 'center' }}>
+                          <div style={{
+                            width: '36px', height: '36px', borderRadius: '50%', margin: '0 auto 8px',
+                            background: 'var(--navy-800)', color: 'var(--gold)',
+                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            fontSize: '14px', fontWeight: 800,
+                          }}>{item.key}</div>
+                          <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--navy-800)', marginBottom: '2px' }}>{item.label}</div>
+                          <div style={{ fontSize: '11px', color: 'var(--text-secondary)', lineHeight: 1.4 }}>{item.desc}</div>
+                        </div>
                       ))}
                     </div>
                   </div>
